@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/20 23:10:22 by yunjcho          ###   ########.fr       */
+/*   Created: 2023/01/20 23:04:56 by yunjcho           #+#    #+#             */
+/*   Updated: 2023/01/20 23:17:53 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <stdio.h>
-# include "libft.h"
-# include "limits.h"
-# include "push_swap_deque.h"
-
-void	print_arg(int ac, char **av);
-void	print_error_exit(void);
-int		is_correct_arg(int ac);
-int		ps_atoi(char *str);
-void	parsing_argv(char **av, t_stack *a);
-void	split_arg(char *str, t_stack *a);
-
-#endif
+void	split_arg(char *str, t_stack *a)
+{
+	char	**arr;
+	int		res;
+	int		i;
+	
+	arr = ft_split(str, ' ');
+	i = 0;
+	while (arr[i])
+	{
+		printf("arr : %s , len : %zu\n", arr[i], ft_strlen(arr[i]));
+		res = ps_atoi(arr[i]);
+		// printf("res : %d\n", res);
+		append_back(a, res);
+		i++;
+	}
+}

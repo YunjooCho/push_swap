@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   push_swap_utils1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/20 22:32:09 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/20 23:17:21 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_argv(char **av)
+void	print_arg(int ac, char **av)
 {
 	int	i;
+	int len;
 
 	i = 1;
+	len = 0;
+	printf("ac : %d\n", ac);
 	while(av[i])
 	{
-		printf("av[%d] : %s\n", i, av[i]);
+		len = ft_strlen(av[i]);
+		printf("av[%d] : %s, len : %d\n", i, av[i], len);
 		i++;
 	}
 }
@@ -31,20 +35,30 @@ void	print_error_exit(void)
 	exit(1);
 }
 
-void	parsing_argv(int ac, char **av, t_stack *a)
+int		is_correct_arg(int ac)
+{
+	int	res;
+
+	res = 0;
+	if (ac <= 1)
+		return (0);
+	return (1);
+}
+
+void	parsing_argv(char **av, t_stack *a)
 {
 	int	idx;
 	int	res;
+	int	str_len;
 
 	idx = 1;
-	res = -1;
-	if (ac <= 1)
-		print_error_exit();
+	res = 0;
+	str_len = 0;
 	while (av[idx])
 	{
-		res = ps_atoi(av[idx]);
-		printf("res : %d\n", res);
-		append_back(a, res);
+		str_len = ft_strlen(av[idx]);
+		// printf("str : %s str_len : %d\n", av[idx], str_len);
+		split_arg(av[idx], a);
 		idx++;
 	}
 }
@@ -68,7 +82,7 @@ int	ps_atoi(char *str)
 	}
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			print_error_exit();
 		result = result * 10 + (str[i] - '0') * n;
 		if (result < INT_MIN || result > INT_MAX)
