@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/20 22:56:19 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/20 23:21:25 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_stack stack_a;
 	t_stack stack_b;
 	
-	print_arg(ac, av);
+	// print_arg(ac, av);
 
 	init_deque(&stack_a);
 	init_deque(&stack_b);

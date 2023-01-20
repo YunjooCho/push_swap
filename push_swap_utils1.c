@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/20 23:17:21 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/20 23:23:40 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,11 @@ void	parsing_argv(char **av, t_stack *a)
 {
 	int	idx;
 	int	res;
-	int	str_len;
 
 	idx = 1;
 	res = 0;
-	str_len = 0;
 	while (av[idx])
 	{
-		str_len = ft_strlen(av[idx]);
 		// printf("str : %s str_len : %d\n", av[idx], str_len);
 		split_arg(av[idx], a);
 		idx++;
