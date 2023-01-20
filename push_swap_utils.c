@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/20 22:16:02 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/20 22:32:09 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,24 @@ void	print_error_exit(void)
 	exit(1);
 }
 
+void	parsing_argv(int ac, char **av, t_stack *a)
+{
+	int	idx;
+	int	res;
+
+	idx = 1;
+	res = -1;
+	if (ac <= 1)
+		print_error_exit();
+	while (av[idx])
+	{
+		res = ps_atoi(av[idx]);
+		printf("res : %d\n", res);
+		append_back(a, res);
+		idx++;
+	}
+}
+
 int	ps_atoi(char *str)
 {
 	long long	i;
@@ -50,6 +68,8 @@ int	ps_atoi(char *str)
 	}
 	while (str[i])
 	{
+		if (ft_isdigit(str[i]))
+			print_error_exit();
 		result = result * 10 + (str[i] - '0') * n;
 		if (result < INT_MIN || result > INT_MAX)
 			print_error_exit();

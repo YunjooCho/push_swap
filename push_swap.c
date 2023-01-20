@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/20 22:03:50 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/20 22:30:55 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int	main(int ac, char **av)
 
 	init_deque(&stack_a);
 	init_deque(&stack_b);
-	if (!is_correct_arg(ac, av, &stack_a))
-	{
-		print_error_exit();
-	}
+	parsing_argv(ac, av, &stack_a);
+	// if (!is_correct_arg(ac, av, &stack_a))
+	// 	print_error_exit();
 	// system("leaks push_swap");
 	print_deque(&stack_a);
 	print_deque(&stack_b);
