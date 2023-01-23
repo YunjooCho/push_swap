@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 17:30:30 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 18:45:15 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ int	main(int ac, char **av)
 	// print_deque(&stack_a);
 	// print_deque(&stack_b);
 	//Sort
-	// ps_command("sa", &stack_a, &stack_b);
-	ps_command("pb", &stack_a, &stack_b);
-	ps_command("pb", &stack_a, &stack_b);
-	ps_command("pa", &stack_a, &stack_b);
-	// system("leaks push_swap");
+	
+
+	system("leaks push_swap");
 
 	return (0);
 }

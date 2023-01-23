@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 17:10:10 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 18:20:19 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_arg(int ac, char **av)
 void	print_error_exit(void)
 {
 	printf("Error\n");
-	// system("leaks push_swap");
+	system("leaks push_swap");
 	exit(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 17:30:45 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 18:36:45 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	free_matrix(char **arr);
 void	ps_command(char *str, t_stack *stack_a, t_stack *stack_b);
 void	cmd_sasb(t_stack *stack);
 void	cmd_papb(t_stack *stack_from, t_stack *stack_to);
-
+void	cmd_rarb(t_stack *stack);
+void	cmd_rrarrb(t_stack *stack);
 #endif
