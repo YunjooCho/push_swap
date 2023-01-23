@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 18:20:19 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 19:11:15 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	print_arg(int ac, char **av)
 {
 	int	i;
-	int len;
+	int	len;
 
 	i = 1;
 	len = 0;
 	printf("ac : %d\n", ac);
-	while(av[i])
+	while (av[i])
 	{
 		len = ft_strlen(av[i]);
 		printf("av[%d] : %s\nav[%d] len : %d\n", i, av[i], i, len);
@@ -35,7 +35,7 @@ void	print_error_exit(void)
 	exit(1);
 }
 
-int		is_correct_arg(int ac)
+int	is_correct_arg(int ac)
 {
 	int	res;
 
@@ -65,7 +65,7 @@ void	split_arg(char *str, t_stack *a)
 	char	**arr;
 	int		res;
 	int		i;
-	
+
 	arr = ft_split(str, ' ');
 	// printf("split_arg arr : %p %s\n", arr, arr[0]);
 	i = 0;

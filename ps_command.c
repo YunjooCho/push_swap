@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:46:11 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 18:42:04 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 18:50:45 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 void	ps_command(char *str, t_stack *stack_a, t_stack *stack_b)
 {
 	int	str_len;
-	
+
 	if (!str || !stack_a || !stack_b)
 		return ;
-	// printf("a : %p %d b :%p %d\n", stack_a, stack_a->cnt, stack_b, stack_b->cnt);
 	str_len = ft_strlen(str);
 	if (!ft_strncmp(str, "sa", str_len))
 		cmd_sasb(stack_a);
@@ -55,29 +54,17 @@ void	ps_command(char *str, t_stack *stack_a, t_stack *stack_b)
 
 void	cmd_sasb(t_stack *stack)
 {
-	t_elem *tmp_top;
-	t_elem *tmp_sec;
-	
+	t_elem	*tmp_top;
+	t_elem	*tmp_sec;
+
 	if (!stack->head || stack->cnt <= 1)
 		return ;
-	
-	// printf("pre pop\n");
-	// print_deque(stack);
-	
 	tmp_top = pop_front(stack);
 	tmp_sec = pop_front(stack);
-	
-	// printf("pop\n");
-	// if (stack->cnt == 0)
-	// 	printf("noting %d\n", stack->cnt);
-	// print_deque(stack);
-	
 	append_front(stack, tmp_top->num);
 	append_front(stack, tmp_sec->num);
-	
-	printf("append\n");
-	print_deque(stack);
-
+	printf("append\n");//TODO - 삭제
+	print_deque(stack);//TODO - 삭제
 	free(tmp_top);
 	free(tmp_sec);
 }
@@ -85,24 +72,21 @@ void	cmd_sasb(t_stack *stack)
 void	cmd_papb(t_stack *stack_from, t_stack *stack_to)
 {
 	t_elem	*tmp;
-	
+
 	tmp = 0;
 	if (stack_from->cnt == 0)
 		return ;
-		
-	printf("stack_from ========\n");
-	print_deque(stack_from);
-	printf("stack_to   ========\n");
-	print_deque(stack_to);
-	
+	printf("stack_from ========\n");//TODO - 삭제
+	print_deque(stack_from);//TODO - 삭제
+	printf("stack_to   ========\n");//TODO - 삭제
+	print_deque(stack_to);//TODO - 삭제
 	tmp = pop_front(stack_from);
 	append_front(stack_to, tmp->num);
 	free(tmp);
-	
-	printf("stack_from ========\n");
-	print_deque(stack_from);
-	printf("stack_to   ========\n");
-	print_deque(stack_to);
+	printf("stack_from ========\n");//TODO - 삭제
+	print_deque(stack_from);//TODO - 삭제
+	printf("stack_to   ========\n");//TODO - 삭제
+	print_deque(stack_to);//TODO - 삭제
 }
 
 void	cmd_rarb(t_stack *stack)
@@ -112,22 +96,10 @@ void	cmd_rarb(t_stack *stack)
 	tmp = 0;
 	if (!stack->head || stack->cnt <= 1)
 		return ;
-	
-	// printf("pre pop\n");
-	// print_deque(stack);
-
 	tmp = pop_front(stack);
-
-	// printf("pop\n");
-	// if (stack->cnt == 0)
-	// 	printf("noting %d\n", stack->cnt);
-	// print_deque(stack);
-
 	append_back(stack, tmp->num);
-
-	printf("append\n");
-	print_deque(stack);
-
+	printf("append\n");//TODO - 삭제
+	print_deque(stack);//TODO - 삭제
 	free(tmp);
 }
 
@@ -138,15 +110,9 @@ void	cmd_rrarrb(t_stack *stack)
 	tmp = 0;
 	if (!stack->head || stack->cnt <= 1)
 		return ;
-	
-	// printf("pre pop\n");
-	// print_deque(stack);
-
 	tmp = pop_back(stack);
 	append_front(stack, tmp->num);
-
-	printf("append\n");
-	print_deque(stack);
-
+	printf("append\n");//TODO - 삭제
+	print_deque(stack);//TODO - 삭제
 	free(tmp);
 }

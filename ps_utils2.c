@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:04:56 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 16:41:31 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 19:10:27 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ int	is_plus_minus(char *str, int i)
 	int	idx;
 
 	idx = i;
+	if (!ft_isdigit(str[idx + 1]))
+		print_error_exit();
 	if (str[idx] == '-')
 		return (-1);
-	idx++;
-	if (!str[idx])
-		return (0);
 	return (1);
 }
 
@@ -63,8 +62,6 @@ int	ps_atoi(char *str)
 	if (str[i] == '+' || str[i] == '-')
 	{
 		n = n * is_plus_minus(str, i);
-		if (!n)
-			print_error_exit();
 		i++;
 	}
 	if (!is_all_zero(str, i))
