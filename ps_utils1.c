@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 21:52:30 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 22:43:59 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_arg(int ac, char **av)
 void	print_error_exit(void)
 {
 	printf("Error\n");
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	exit(1);
 }
 
@@ -53,13 +53,13 @@ void	parsing_argv(char **av, t_stack *stack)
 	while (av[idx])
 	{
 		// printf("str : %s str_len : %d\n", av[idx], str_len);
-		split_arg(av[idx], stack);
+		split_atoi(av[idx], stack);
 		idx++;
 	}
 	
 }
 
-void	split_arg(char *str, t_stack *stack)
+void	split_atoi(char *str, t_stack *stack)
 {
 	char	**arr;
 	int		res;

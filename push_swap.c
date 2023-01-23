@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 21:51:35 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 22:47:46 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	t_stack	stack_a;
 	t_stack	stack_b;
 	int		*cmd_cnt = 0;
+	int		real_ac;
 
 	// *cmd_cnt = 0;
 	print_arg(ac, av);
@@ -29,15 +30,16 @@ int	main(int ac, char **av)
 	init_deque(&stack_b);
 	if (!is_correct_arg(ac))
 		print_error_exit();
+	real_ac = ac - 1;
 	parsing_argv(av, &stack_a);
-	//Sort
-	// stack_a.arg_cnt = ac - 1;
-	// stack_b.arg_cnt = stack_a.arg_cnt;
-	sort_deque(&stack_a, &stack_b, cmd_cnt);
+	if (real_ac <= 5)
+		sort_under_five(&stack_a, &stack_b, cmd_cnt, real_ac);
+	else
+		sort_deque(&stack_a, &stack_b, cmd_cnt);
 	printf("stack a =============\n");
 	print_deque(&stack_a);
 	printf("stack b =============\n");
 	print_deque(&stack_b);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (0);
 }

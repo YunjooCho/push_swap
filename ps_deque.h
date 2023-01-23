@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:23:29 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 21:54:30 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 21:55:20 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ typedef struct s_stack
 	t_elem	*head;
 	t_elem	*tail;
 	int		cnt;
-	int		max_num;
-	int		min_num;
-	int		mid_num;
-	int		arg_cnt;
 }	t_stack;
 
 t_stack	*malloc_deque(void);
