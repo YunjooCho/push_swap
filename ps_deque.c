@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_deque.c                                  :+:      :+:    :+:   */
+/*   ps_deque.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:54 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/20 22:17:47 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 21:54:22 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	append_front(t_stack *deque, int num)
 		new_element->next = deque->head;
 		deque->head = new_element;
 	}
+	if (new_element->num > deque->max_num)
+		deque->max_num = new_element->num;
+	if (new_element->num < deque->min_num)
+		deque->min_num = new_element->num;
+	deque->mid_num = (deque->max_num + deque->min_num) / 2;
 	deque->cnt++;
 }
 
@@ -53,6 +58,11 @@ void	append_back(t_stack *deque, int num)
 		deque->tail->next = new_element;
 		deque->tail = new_element;
 	}
+	if (new_element->num > deque->max_num)
+		deque->max_num = new_element->num;
+	if (new_element->num < deque->min_num)
+		deque->min_num = new_element->num;
+	deque->mid_num = (deque->max_num + deque->min_num) / 2;
 	deque->cnt++;
 }
 
@@ -98,4 +108,23 @@ t_elem	*pop_back(t_stack *deque)
 		return (tmp);
 	}
 	return (0);
+}
+
+void	init_max_min(t_stack *deque)
+{
+	t_elem	*tmp;
+
+	deque->max_num = 0;
+	deque->min_num = 0;
+	deque->mid_num = 0;
+	tmp = deque->head;
+	while (tmp)
+	{
+		if (tmp->num > deque->max_num)
+			deque->max_num = tmp->num;
+		if (tmp->num < deque->min_num)
+			deque->min_num = tmp->num;
+		deque->mid_num = (deque->max_num + deque->min_num) / 2;
+		tmp = tmp->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 19:11:15 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 21:52:30 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,21 @@ int	is_correct_arg(int ac)
 	return (1);
 }
 
-void	parsing_argv(char **av, t_stack *a)
+void	parsing_argv(char **av, t_stack *stack)
 {
 	int	idx;
-	int	res;
 
 	idx = 1;
-	res = 0;
 	while (av[idx])
 	{
 		// printf("str : %s str_len : %d\n", av[idx], str_len);
-		split_arg(av[idx], a);
+		split_arg(av[idx], stack);
 		idx++;
 	}
+	
 }
 
-void	split_arg(char *str, t_stack *a)
+void	split_arg(char *str, t_stack *stack)
 {
 	char	**arr;
 	int		res;
@@ -76,7 +75,7 @@ void	split_arg(char *str, t_stack *a)
 		// printf("arr : %s , len : %zu\n", arr[i], ft_strlen(arr[i]));
 		res = ps_atoi(arr[i]);
 		// printf("res : %d\n", res);
-		append_back(a, res);
+		append_back(stack, res);
 		i++;
 	}
 	free_matrix(arr);
