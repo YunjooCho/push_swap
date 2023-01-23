@@ -6,7 +6,7 @@
 #    By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/20 17:32:34 by yunjcho           #+#    #+#              #
-#    Updated: 2023/01/20 23:04:52 by yunjcho          ###   ########.fr        #
+#    Updated: 2023/01/23 14:53:23 by yunjcho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
-SRCS = push_swap.c push_swap_utils1.c push_swap_utils2.c \
-       push_swap_deque.c push_swap_deque_utils.c
+SRCS = push_swap.c ps_utils1.c ps_utils2.c \
+       ps_deque.c ps_deque_utils.c
 OBJS = $(SRCS:.c=.o) $(GNL_SRC:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o) $(GNL_SRC:.c=.o)
 

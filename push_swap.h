@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/20 23:10:22 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 14:52:58 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include "libft.h"
 # include "limits.h"
-# include "push_swap_deque.h"
+# include "ps_deque.h"
 
 void	print_arg(int ac, char **av);
 void	print_error_exit(void);
