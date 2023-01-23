@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 22:48:10 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 22:52:03 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	cmd_sasb(t_stack *stack);
 void	cmd_papb(t_stack *stack_from, t_stack *stack_to);
 void	cmd_rarb(t_stack *stack);
 void	cmd_rrarrb(t_stack *stack);
-void	sort_under_five(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt, int real_ac);
+void	sort_under_five(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt);
 void	sort_deque(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt);
 
 #endif

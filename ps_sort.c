@@ -6,16 +6,18 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 22:44:59 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/23 22:56:26 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_under_five(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt, int real_ac)
+void	sort_under_five(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt)
 {
-	if (real_ac == 1)
-		printf("%d\n", real_ac);
+	if (stack_a->cnt == 1)
+		printf("%d\n", stack_a->cnt);
+	else if (stack_a->cnt == 2)
+		
 }
 
 void	sort_deque(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt)
