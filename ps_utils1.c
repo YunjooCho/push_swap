@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 22:43:59 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:51:36 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,20 @@ void	print_arg(int ac, char **av)
 	}
 }
 
-void	print_error_exit(void)
+void	print_exit(int flag)
 {
-	printf("Error\n");
-	// system("leaks push_swap");
-	exit(1);
+	if (flag == 1)
+	{
+		printf("Error\n");
+		// system("leaks push_swap");
+		exit(1);
+	}
+	else if (flag == 0)
+	{
+		printf("End\n");
+		// system("leaks push_swap");
+		exit(1) ;
+	}
 }
 
 int	is_correct_arg(int ac)
@@ -47,36 +56,15 @@ int	is_correct_arg(int ac)
 
 void	parsing_argv(char **av, t_stack *stack)
 {
+	int	i;
 	int	idx;
 
-	idx = 1;
-	while (av[idx])
+	i = 1;
+	idx = 0;
+	while (av[i])
 	{
 		// printf("str : %s str_len : %d\n", av[idx], str_len);
-		split_atoi(av[idx], stack);
-		idx++;
-	}
-	
-}
-
-void	split_atoi(char *str, t_stack *stack)
-{
-	char	**arr;
-	int		res;
-	int		i;
-
-	arr = ft_split(str, ' ');
-	// printf("split_arg arr : %p %s\n", arr, arr[0]);
-	i = 0;
-	if (!arr[i])
-		print_error_exit();
-	while (arr[i])
-	{
-		// printf("arr : %s , len : %zu\n", arr[i], ft_strlen(arr[i]));
-		res = ps_atoi(arr[i]);
-		// printf("res : %d\n", res);
-		append_back(stack, res);
+		split_atoi(av[i], stack, &idx);
 		i++;
 	}
-	free_matrix(arr);
 }

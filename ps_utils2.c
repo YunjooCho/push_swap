@@ -6,18 +6,33 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:04:56 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 19:10:27 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:38:12 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_space(char chr)
+void	split_atoi(char *str, t_stack *stack, int *idx)
 {
-	if (chr == '\t' || chr == '\n' || chr == '\v' \
-		|| chr == '\f' || chr == '\r' || chr == ' ')
-		return (0);
-	return (1);
+	char	**arr;
+	int		res;
+	int		i;
+
+	arr = ft_split(str, ' ');
+	// printf("split_arg arr : %p %s\n", arr, arr[0]);
+	i = 0;
+	if (!arr[i])
+		print_exit(1);
+	while (arr[i])
+	{
+		// printf("arr[%d] : %s , len : %zu\n", i, arr[i], ft_strlen(arr[i]));
+		res = ps_atoi(arr[i]);
+		append_back(stack, res, idx);
+		(*idx)++;
+		i++;
+		// printf("res , %d, i : %d\n", res, i);
+	}
+	free_matrix(arr);
 }
 
 int	is_plus_minus(char *str, int i)
@@ -26,7 +41,7 @@ int	is_plus_minus(char *str, int i)
 
 	idx = i;
 	if (!ft_isdigit(str[idx + 1]))
-		print_error_exit();
+		print_exit(1);
 	if (str[idx] == '-')
 		return (-1);
 	return (1);
@@ -65,14 +80,14 @@ int	ps_atoi(char *str)
 		i++;
 	}
 	if (!is_all_zero(str, i))
-		print_error_exit();
+		print_exit(1);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			print_error_exit();
+			print_exit(1);
 		result = result * 10 + (str[i] - '0') * n;
 		if (result < INT_MIN || result > INT_MAX)
-			print_error_exit();
+			print_exit(1);
 		i++;
 	}
 	return ((int)result);

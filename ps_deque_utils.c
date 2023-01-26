@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:03:42 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 22:06:42 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:51:08 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ void	init_deque(t_stack *deque)
 	deque->cnt = 0;
 }
 
-void	init_element(t_elem *element, int num)
+void	init_element(t_elem *element, int num, int *idx)
 {
 	element->num = num;
-	element->idx = 0;
+	element->idx = *idx;
 	element->prev = NULL;
 	element->next = NULL;
+	// printf("init_elem idx : %d, num : %d\n", element->idx, element->num);
 }
 
 void	free_deque(t_stack *deque)
@@ -52,15 +53,13 @@ void	free_deque(t_stack *deque)
 
 void	print_deque(t_stack *deque)
 {
-	int		i;
 	t_elem	*tmp;
 
-	i = 0;
 	tmp = deque->head;
 	while (tmp)
 	{
 		printf("elem[%d] :%p, num : %d, idx : %d, prev : %p, next : %p\n", \
-			i++, tmp, tmp->num, tmp->idx, tmp->prev, tmp->next);
+			tmp->idx, tmp, tmp->num, tmp->idx, tmp->prev, tmp->next);
 		tmp = tmp->next;
 	}
 }

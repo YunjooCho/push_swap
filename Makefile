@@ -6,7 +6,7 @@
 #    By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/20 17:32:34 by yunjcho           #+#    #+#              #
-#    Updated: 2023/01/23 19:31:33 by yunjcho          ###   ########.fr        #
+#    Updated: 2023/01/26 13:26:45 by yunjcho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
 SRCS = push_swap.c ps_utils1.c ps_utils2.c ps_utils3.c \
        ps_deque.c ps_deque_utils.c \
-	   ps_command.c ps_sort.c
+	   ps_command.c ps_sort1.c ps_sort2.c
 OBJS = $(SRCS:.c=.o) $(GNL_SRC:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o) $(GNL_SRC:.c=.o)
 

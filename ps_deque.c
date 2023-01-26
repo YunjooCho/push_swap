@@ -6,20 +6,20 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:54 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 21:57:28 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:37:29 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append_front(t_stack *deque, int num)
+void	append_front(t_stack *deque, int num, int *idx)
 {
 	t_elem	*new_element;
 
 	new_element = (t_elem *)malloc(sizeof(t_elem));
 	if (!new_element)
 		return ;
-	init_element(new_element, num);
+	init_element(new_element, num, idx);
 	if (!deque->head)
 	{
 		deque->head = new_element;
@@ -34,14 +34,14 @@ void	append_front(t_stack *deque, int num)
 	deque->cnt++;
 }
 
-void	append_back(t_stack *deque, int num)
+void	append_back(t_stack *deque, int num, int *idx)
 {
 	t_elem	*new_element;
 
 	new_element = (t_elem *)malloc(sizeof(t_elem));
 	if (!new_element)
 		return ;
-	init_element(new_element, num);
+	init_element(new_element, num, idx);
 	if (!deque->tail)
 	{
 		deque->head = new_element;
@@ -99,22 +99,3 @@ t_elem	*pop_back(t_stack *deque)
 	}
 	return (0);
 }
-
-// void	init_max_min(t_stack *deque)
-// {
-// 	t_elem	*tmp;
-
-// 	deque->max_num = 0;
-// 	deque->min_num = 0;
-// 	deque->mid_num = 0;
-// 	tmp = deque->head;
-// 	while (tmp)
-// 	{
-// 		if (tmp->num > deque->max_num)
-// 			deque->max_num = tmp->num;
-// 		if (tmp->num < deque->min_num)
-// 			deque->min_num = tmp->num;
-// 		deque->mid_num = (deque->max_num + deque->min_num) / 2;
-// 		tmp = tmp->next;
-// 	}
-// }

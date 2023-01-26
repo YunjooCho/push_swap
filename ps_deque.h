@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:23:29 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/23 21:55:20 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:35:52 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct s_stack
 
 t_stack	*malloc_deque(void);
 void	init_deque(t_stack *deque);
-void	init_element(t_elem *element, int val);
-void	append_front(t_stack *deque, int val);
-void	append_back(t_stack *deque, int val);
+void	init_element(t_elem *element, int val, int *idx);
+void	append_front(t_stack *deque, int val, int *idx);
+void	append_back(t_stack *deque, int val, int *idx);
 t_elem	*pop_front(t_stack *deque);
 t_elem	*pop_back(t_stack *deque);
 void	free_deque(t_stack *deque);
