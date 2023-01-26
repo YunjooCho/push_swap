@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:46:11 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 15:43:41 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 18:05:44 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	cmd_sasb(t_stack *stack)
 		return ;
 	tmp_top = pop_front(stack);
 	tmp_sec = pop_front(stack);
-	append_front(stack, tmp_top->num, &tmp_top->idx);
-	append_front(stack, tmp_sec->num, &tmp_sec->idx);
+	append_front(stack, tmp_top->num, &tmp_top->order);
+	append_front(stack, tmp_sec->num, &tmp_sec->order);
 	// printf("append\n");//TODO - 삭제
 	// print_deque(stack);//TODO - 삭제
 	free(tmp_top);
@@ -81,7 +81,7 @@ void	cmd_papb(t_stack *stack_from, t_stack *stack_to)
 	// printf("stack_to   ========\n");//TODO - 삭제
 	// print_deque(stack_to);//TODO - 삭제
 	tmp = pop_front(stack_from);
-	append_front(stack_to, tmp->num, &tmp->idx);
+	append_front(stack_to, tmp->num, &tmp->order);
 	free(tmp);
 	// printf("stack_from ========\n");//TODO - 삭제
 	// print_deque(stack_from);//TODO - 삭제
@@ -97,7 +97,7 @@ void	cmd_rarb(t_stack *stack)
 	if (!stack->head || stack->cnt <= 1)
 		return ;
 	tmp = pop_front(stack);
-	append_back(stack, tmp->num, &tmp->idx);
+	append_back(stack, tmp->num, &tmp->order);
 	// printf("append\n");//TODO - 삭제
 	// print_deque(stack);//TODO - 삭제
 	free(tmp);
@@ -111,7 +111,7 @@ void	cmd_rrarrb(t_stack *stack)
 	if (!stack->head || stack->cnt <= 1)
 		return ;
 	tmp = pop_back(stack);
-	append_front(stack, tmp->num, &tmp->idx);
+	append_front(stack, tmp->num, &tmp->order);
 	// printf("append\n");//TODO - 삭제
 	// print_deque(stack);//TODO - 삭제
 	free(tmp);

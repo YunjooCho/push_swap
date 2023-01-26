@@ -6,20 +6,20 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:54 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 15:37:29 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 17:51:23 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append_front(t_stack *deque, int num, int *idx)
+void	append_front(t_stack *deque, int num, int *order)
 {
 	t_elem	*new_element;
 
 	new_element = (t_elem *)malloc(sizeof(t_elem));
 	if (!new_element)
 		return ;
-	init_element(new_element, num, idx);
+	init_element(new_element, num, order);
 	if (!deque->head)
 	{
 		deque->head = new_element;
@@ -34,14 +34,14 @@ void	append_front(t_stack *deque, int num, int *idx)
 	deque->cnt++;
 }
 
-void	append_back(t_stack *deque, int num, int *idx)
+void	append_back(t_stack *deque, int num, int *order)
 {
 	t_elem	*new_element;
 
 	new_element = (t_elem *)malloc(sizeof(t_elem));
 	if (!new_element)
 		return ;
-	init_element(new_element, num, idx);
+	init_element(new_element, num, order);
 	if (!deque->tail)
 	{
 		deque->head = new_element;

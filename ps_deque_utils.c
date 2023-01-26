@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:03:42 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 15:51:08 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 21:49:00 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	init_deque(t_stack *deque)
 	deque->cnt = 0;
 }
 
-void	init_element(t_elem *element, int num, int *idx)
+void	init_element(t_elem *element, int num, int *order)
 {
 	element->num = num;
-	element->idx = *idx;
+	element->order = *order;
 	element->prev = NULL;
 	element->next = NULL;
 	// printf("init_elem idx : %d, num : %d\n", element->idx, element->num);
@@ -58,8 +58,55 @@ void	print_deque(t_stack *deque)
 	tmp = deque->head;
 	while (tmp)
 	{
-		printf("elem[%d] :%p, num : %d, idx : %d, prev : %p, next : %p\n", \
-			tmp->idx, tmp, tmp->num, tmp->idx, tmp->prev, tmp->next);
+		printf("elem[%d] :%p, num : %d, order : %d, prev : %p, next : %p\n", \
+			tmp->order, tmp, tmp->num, tmp->order, tmp->prev, tmp->next);
 		tmp = tmp->next;
 	}
+}
+
+void	setting_order(t_stack *stack_a, int ac)
+{
+	int		i;
+	void	**arr;
+	t_elem	*tmp;
+
+	i = 0;
+	arr = (void **)malloc(sizeof(void *) * ac);
+	tmp = stack_a->head;
+	while (tmp)
+	{
+		arr[i] = tmp;
+		tmp = tmp->next;
+	}
+	sort_arr(arr, stack_a, ac);
+}
+
+int	find_pivot(t_stack *stack_a, int ac)
+{
+	int		pivot;
+	t_elem	*tmp;
+
+	tmp = stack_a->head;
+	pivot = tmp->num;
+	
+}
+
+void	sort_arr(void *arr, t_stack *stack_a, int ac)
+{
+	int	len;
+	int	mid;
+	int	pivot;
+
+	len = ac - 1;
+	mid = ac / 2;
+	quick_sort(0, mid, arr);
+	// while (left != right)
+	// {
+		
+	// }
+}
+
+void	quick_sort(void *arr, int left, int right)
+{
+	
 }

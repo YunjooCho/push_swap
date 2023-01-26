@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 15:51:36 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 17:55:48 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ int	is_correct_arg(int ac)
 void	parsing_argv(char **av, t_stack *stack)
 {
 	int	i;
-	int	idx;
+	int	order;
 
 	i = 1;
-	idx = 0;
+	order = 1;
 	while (av[i])
 	{
 		// printf("str : %s str_len : %d\n", av[idx], str_len);
-		split_atoi(av[i], stack, &idx);
+		split_atoi(av[i], stack, &order);
 		i++;
 	}
 }

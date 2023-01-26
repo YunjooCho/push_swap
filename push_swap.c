@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 16:42:00 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 20:49:41 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,31 @@ void	leak_check(void)
 
 int	main(int ac, char **av)
 {
-	t_stack	stack_a;
-	t_stack	stack_b;
-	void	**sort_arr;
-	int		cmd_cnt;
+	t_stack		stack_a;
+	t_stack		stack_b;
+	// void		*sort_arr;
+	
+	int			cmd_cnt;
 
 	cmd_cnt = 0;
-	print_arg(ac, av);
+	// sort_arr = 0;
+	// print_arg(ac, av);
 	init_deque(&stack_a);
 	init_deque(&stack_b);
 	if (!is_correct_arg(ac))
 		print_exit(1);
 	parsing_argv(av, &stack_a);
-	sort_arr = make_sortarr(&stack_a, ac);
-	// if (stack_a.cnt <= 5)
-	// 	sort_under_five(&stack_a, &stack_b, &cmd_cnt);
-	// else
-	// 	sort_deque(&stack_a, &stack_b, &cmd_cnt);
+	setting_order(&stack_a, ac);
+	// make_sortarr(sort_arr, &stack_a, ac);
+	if (stack_a.cnt <= 5)
+		sort_under_five(&stack_a, &stack_b, &cmd_cnt);
+	else
+		sort_deque(&stack_a, &stack_b, &cmd_cnt);
 	printf("stack a =============\n");
 	print_deque(&stack_a);
 	printf("stack b =============\n");
 	print_deque(&stack_b);
+	printf("cmd_cnt : %d\n", cmd_cnt);
 	// system("leaks push_swap");
 	return (0);
 }

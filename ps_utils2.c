@@ -6,13 +6,13 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:04:56 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 15:38:12 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 17:55:26 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	split_atoi(char *str, t_stack *stack, int *idx)
+void	split_atoi(char *str, t_stack *stack, int *order)
 {
 	char	**arr;
 	int		res;
@@ -27,9 +27,9 @@ void	split_atoi(char *str, t_stack *stack, int *idx)
 	{
 		// printf("arr[%d] : %s , len : %zu\n", i, arr[i], ft_strlen(arr[i]));
 		res = ps_atoi(arr[i]);
-		append_back(stack, res, idx);
-		(*idx)++;
+		append_back(stack, res, order);
 		i++;
+		(*order)++;
 		// printf("res , %d, i : %d\n", res, i);
 	}
 	free_matrix(arr);

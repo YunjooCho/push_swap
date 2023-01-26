@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:23:29 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 15:35:52 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 17:51:53 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_elem
 {
 	int				num;
-	int				idx;
+	int				order;
 	struct s_elem	*prev;
 	struct s_elem	*next;
 }	t_elem;
