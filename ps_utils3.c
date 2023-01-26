@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 21:54:17 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 22:06:29 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,29 @@ void	setting_order(t_stack *stack_a, int ac)
 	sort_arr(arr, stack_a, ac);
 }
 
+void	sort_arr(void *arr, t_stack *stack_a, int ac)
+{
+	int	len;
+	int	mid;
+
+	len = ac - 1;
+	mid = ac / 2;
+	printf("arr : %p, stack_a addr : %p\n", arr, stack_a);
+	quick_sort(arr, 0, len);
+}
+
+void	quick_sort(void *arr, int left, int right) //고치기
+{	int	pivot;
+
+	pivot = 0;
+	if (left >= right)
+		return ;
+	pivot = (left + right) / 2;
+
+	quick_sort(arr, left, pivot);
+	quick_sort(arr, pivot + 1, right);
+}
+
 // int	find_pivot(t_stack *stack_a, int ac)
 // {
 // 	int		pivot;
@@ -49,23 +72,5 @@ void	setting_order(t_stack *stack_a, int ac)
 
 // 	tmp = stack_a->head;
 // 	pivot = tmp->num;
-	
-// }
-
-void	sort_arr(void *arr, t_stack *stack_a, int ac)
-{
-	int	len;
-	int	mid;
-	// int	pivot;
-
-	len = ac - 1;
-	mid = ac / 2;
-	printf("arr : %p, stack_a addr : %p\n", arr, stack_a);
-	// quick_sort(0, mid, arr);
-
-}
-
-// void	quick_sort(void *arr, int left, int right)
-// {
 	
 // }

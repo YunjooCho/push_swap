@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 21:52:29 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 22:05:45 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void	sort_deque(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt);
 // void	make_sortarr(t_array **sort_arr, t_stack *stack, int ac);
 void	setting_order(t_stack *stack_a, int ac);
 void	sort_arr(void *arr, t_stack *stack_a, int ac);
+void	quick_sort(void *arr, int left, int right);
 
 #endif
