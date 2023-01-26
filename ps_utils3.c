@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 22:06:29 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/26 22:10:21 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	sort_arr(void *arr, t_stack *stack_a, int ac)
 	quick_sort(arr, 0, len);
 }
 
-void	quick_sort(void *arr, int left, int right) //고치기
+void	quick_sort(void *arr, int left, int right) //고치기(인덱스를 통해 숫자가 나오도록, 정렬에 따라 인덱스도 변경되도록 하기)
 {	int	pivot;
 
 	pivot = 0;
@@ -61,7 +61,7 @@ void	quick_sort(void *arr, int left, int right) //고치기
 		return ;
 	pivot = (left + right) / 2;
 
-	quick_sort(arr, left, pivot);
+	quick_sort(arr, left, pivot - 1);
 	quick_sort(arr, pivot + 1, right);
 }
 
