@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 22:10:21 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/27 23:04:12 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,45 +25,65 @@ void	free_matrix(char **arr)
 	free(arr);
 }
 
-void	setting_order(t_stack *stack_a, int ac)
+void	setting_order(t_stack *stack_a, t_stack *stack_b, int ac)
 {
-	int		i;
-	void	**arr;
-	t_elem	*tmp;
+	int	length[3];
+
+	init_lenarr(length[0], ac);
+}
+
+void	init_lengarr(int *arr, int ac)
+{
+	int	i;
+	int	mod;
 
 	i = 0;
-	arr = (void **)malloc(sizeof(void *) * ac);
-	tmp = stack_a->head;
-	while (tmp)
+	mod = 0;
+	while (i < 3 && mod < 3)
 	{
-		arr[i] = tmp;
-		tmp = tmp->next;
+		// arr[i] = 
 	}
-	sort_arr(arr, stack_a, ac);
 }
 
-void	sort_arr(void *arr, t_stack *stack_a, int ac)
-{
-	int	len;
-	int	mid;
+// void	setting_order(t_stack *stack_a, int ac)
+// {
+// 	int		i;
+// 	void	**arr;
+// 	t_elem	*tmp;
 
-	len = ac - 1;
-	mid = ac / 2;
-	printf("arr : %p, stack_a addr : %p\n", arr, stack_a);
-	quick_sort(arr, 0, len);
-}
+// 	i = 0;
+// 	arr = (void **)malloc(sizeof(void *) * ac);
+// 	tmp = stack_a->head;
+// 	while (tmp)
+// 	{
+// 		arr[i] = tmp;
+// 		tmp = tmp->next;
+// 	}
+// 	sort_arr(arr, stack_a, ac);
+// }
 
-void	quick_sort(void *arr, int left, int right) //고치기(인덱스를 통해 숫자가 나오도록, 정렬에 따라 인덱스도 변경되도록 하기)
-{	int	pivot;
+// void	sort_arr(void *arr, t_stack *stack_a, int ac)
+// {
+// 	int	len;
+// 	int	mid;
 
-	pivot = 0;
-	if (left >= right)
-		return ;
-	pivot = (left + right) / 2;
+// 	len = ac - 1;
+// 	mid = ac / 2;
+// 	printf("arr : %p, stack_a addr : %p\n", arr, stack_a);
+// 	quick_sort(arr, 0, len);
+// }
 
-	quick_sort(arr, left, pivot - 1);
-	quick_sort(arr, pivot + 1, right);
-}
+// void	quick_sort(void *arr, int left, int right) //고치기(인덱스를 통해 숫자가 나오도록, 정렬에 따라 인덱스도 변경되도록 하기)
+// {	int	pivot;
+
+// 	pivot = 0;
+// 	if (left >= right)
+// 		return ;
+// 	pivot = (left + right) / 2;
+
+// 	quick_sort(arr, left, pivot - 1);
+// 	quick_sort(arr, pivot + 1, right);
+// }
 
 // int	find_pivot(t_stack *stack_a, int ac)
 // {
@@ -74,3 +94,4 @@ void	quick_sort(void *arr, int left, int right) //고치기(인덱스를 통해 
 // 	pivot = tmp->num;
 	
 // }
+
