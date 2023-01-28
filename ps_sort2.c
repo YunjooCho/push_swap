@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/28 19:25:10 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/28 19:28:07 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ void	sort_tree_elem(t_stack *stack_a, int *cmd_cnt)
 			init_checkarr(stack_a, check, len);
 		}
 	}
+}
+
+void	sort_four_elem(t_stack *stack_a, int *cmd_cnt)
+{
+	printf("stack_a : %p cmd_cnt : %d\n", stack_a, *cmd_cnt);
 }
 
 void	init_checkarr(t_stack *stack_a, int *check, int len)
