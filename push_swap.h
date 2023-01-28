@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 22:05:45 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/28 19:14:31 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void	cmd_rarb(t_stack *stack);
 void	cmd_rrarrb(t_stack *stack);
 // void	sort_under_five(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt, void **sort_arr);
 void	sort_under_five(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt);
+void	init_checkarr(t_stack *stack_a, int *check, int len);
 void	sort_two_elem(t_stack *stack, int *cmd_cnt);
-// void	sort_tree_elem(t_stack *stack, int *cmd_cnt);
+void	sort_tree_elem(t_stack *stack, int *cmd_cnt);
 void	sort_deque(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt);
 // void	make_sortarr(t_array **sort_arr, t_stack *stack, int ac);
 void	setting_order(t_stack *stack_a, int ac);

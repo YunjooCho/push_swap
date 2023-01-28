@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/26 19:15:44 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/28 19:15:10 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,112 @@ void	sort_two_elem(t_stack *stack, int *cmd_cnt)
 	}
 }
 
-// void	sort_tree_elem(t_stack *stack, int *cmd_cnt)
+// void	sort_tree_elem(t_stack *stack_a, int *cmd_cnt)
 // {
-	
+// 	int	fir_num;
+// 	int	sec_num;
+// 	int	thr_num;
+
+// 	fir_num = stack_a->head->num;
+// 	sec_num = stack_a->head->next->num;
+// 	thr_num = stack_a->tail->num;
+// 	if (fir_num < thr_num)
+// 	{
+// 		if (fir_num < sec_num && sec_num > thr_num)
+// 		{
+// 			cmd_rrarrb(stack_a);
+// 			cmd_sasb(stack_a);
+// 			*cmd_cnt = 2;
+// 		}
+// 		else
+// 		{
+// 			cmd_sasb(stack_a);
+// 			*cmd_cnt = 1;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		if (fir_num < sec_num)
+// 		{
+// 			cmd_rrarrb(stack_a);
+// 			*cmd_cnt = 1;
+// 		}
+// 		else
+// 		{
+// 			if (sec_num < thr_num)
+// 			{
+// 				cmd_rarb(stack_a);
+// 				*cmd_cnt = 1;
+// 			}
+// 			else
+// 			{
+// 				cmd_sasb(stack_a);
+// 				cmd_rrarrb(stack_a);
+// 				*cmd_cnt = 2;
+// 			}
+// 		}
+// 	}
 // }
+
+void	sort_tree_elem(t_stack *stack_a, int *cmd_cnt)
+{
+	int	check[3];
+	int	len;
+
+	len = 3;
+	init_checkarr(stack_a, check, len);
+	while (1)
+	{
+		if (check[0] && check[1] && check[2])
+			return ;
+		if (!check[0] && !check[1] && check[2])
+		{
+			cmd_rarb(stack_a);
+			(*cmd_cnt)++;
+			init_checkarr(stack_a, check, len);
+			continue ;
+		}
+		if (!check[1])
+		{
+			cmd_sasb(stack_a);
+			(*cmd_cnt)++;
+			init_checkarr(stack_a, check, len);
+		}
+		if (!check[2])
+		{
+			cmd_rrarrb(stack_a);
+			(*cmd_cnt)++;
+			init_checkarr(stack_a, check, len);
+		}
+	}
+}
+
+void	init_checkarr(t_stack *stack_a, int *check, int len)
+{
+	int		idx;
+	t_elem	*i;
+	t_elem	*j;
+
+	idx = 0;
+	i = stack_a->head;
+	j = stack_a->tail;
+	while (idx < len && j)
+	{
+		// printf("i : %d, j : %d\n", i->num, j->num);
+		if (j->num - i->num < 0)
+			check[idx] = 0;
+		else
+			check[idx] = 1;
+		idx++;
+		if (idx == 1)
+		{
+			j = stack_a->head->next;
+			continue ;
+		}
+		i = i->next;
+		j = j->next;
+	}
+	// printf("check[0] : %d\n", check[0]);
+	// printf("check[1] : %d\n", check[1]);
+	// printf("check[2] : %d\n", check[2]);
+}
