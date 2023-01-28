@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/28 19:15:10 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/28 19:25:10 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,53 +28,6 @@ void	sort_two_elem(t_stack *stack, int *cmd_cnt)
 		(*cmd_cnt)++;
 	}
 }
-
-// void	sort_tree_elem(t_stack *stack_a, int *cmd_cnt)
-// {
-// 	int	fir_num;
-// 	int	sec_num;
-// 	int	thr_num;
-
-// 	fir_num = stack_a->head->num;
-// 	sec_num = stack_a->head->next->num;
-// 	thr_num = stack_a->tail->num;
-// 	if (fir_num < thr_num)
-// 	{
-// 		if (fir_num < sec_num && sec_num > thr_num)
-// 		{
-// 			cmd_rrarrb(stack_a);
-// 			cmd_sasb(stack_a);
-// 			*cmd_cnt = 2;
-// 		}
-// 		else
-// 		{
-// 			cmd_sasb(stack_a);
-// 			*cmd_cnt = 1;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		if (fir_num < sec_num)
-// 		{
-// 			cmd_rrarrb(stack_a);
-// 			*cmd_cnt = 1;
-// 		}
-// 		else
-// 		{
-// 			if (sec_num < thr_num)
-// 			{
-// 				cmd_rarb(stack_a);
-// 				*cmd_cnt = 1;
-// 			}
-// 			else
-// 			{
-// 				cmd_sasb(stack_a);
-// 				cmd_rrarrb(stack_a);
-// 				*cmd_cnt = 2;
-// 			}
-// 		}
-// 	}
-// }
 
 void	sort_tree_elem(t_stack *stack_a, int *cmd_cnt)
 {

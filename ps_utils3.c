@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/27 23:04:12 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/28 19:22:51 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,25 @@ void	free_matrix(char **arr)
 	free(arr);
 }
 
-void	setting_order(t_stack *stack_a, t_stack *stack_b, int ac)
-{
-	int	length[3];
+// void	setting_order(t_stack *stack_a, t_stack *stack_b, int ac)
+// {
+// 	int	length[3];
 
-	init_lenarr(length[0], ac);
-}
+// 	init_lenarr(length[0], ac);
+// }
 
-void	init_lengarr(int *arr, int ac)
-{
-	int	i;
-	int	mod;
+// void	init_lengarr(int *arr, int ac)
+// {
+// 	int	i;
+// 	int	mod;
 
-	i = 0;
-	mod = 0;
-	while (i < 3 && mod < 3)
-	{
-		// arr[i] = 
-	}
-}
+// 	i = 0;
+// 	mod = 0;
+// 	while (i < 3 && mod < 3)
+// 	{
+// 		// arr[i] = 
+// 	}
+// }
 
 // void	setting_order(t_stack *stack_a, int ac)
 // {
