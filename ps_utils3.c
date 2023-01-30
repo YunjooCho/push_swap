@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/28 19:22:51 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/30 21:23:37 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,73 +25,67 @@ void	free_matrix(char **arr)
 	free(arr);
 }
 
-// void	setting_order(t_stack *stack_a, t_stack *stack_b, int ac)
-// {
-// 	int	length[3];
+void	setting_order(t_elem **order_arr, t_stack *stack_a, int ac)
+{
+	int		i;
+	t_elem	*tmp;
 
-// 	init_lenarr(length[0], ac);
-// }
+	i = 0;
+	tmp = stack_a->head;
+	order_arr = (t_elem **)malloc(sizeof(t_elem *) * (ac - 1));
+	while (tmp)
+	{
+		order_arr[i] = tmp;
+		tmp = tmp->next;
+		i++;
+	}
+	sort_arr(order_arr, ac);
+	print_arr(order_arr, ac);
+}
 
-// void	init_lengarr(int *arr, int ac)
-// {
-// 	int	i;
-// 	int	mod;
-
-// 	i = 0;
-// 	mod = 0;
-// 	while (i < 3 && mod < 3)
-// 	{
-// 		// arr[i] = 
-// 	}
-// }
-
-// void	setting_order(t_stack *stack_a, int ac)
-// {
-// 	int		i;
-// 	void	**arr;
-// 	t_elem	*tmp;
-
-// 	i = 0;
-// 	arr = (void **)malloc(sizeof(void *) * ac);
-// 	tmp = stack_a->head;
-// 	while (tmp)
-// 	{
-// 		arr[i] = tmp;
-// 		tmp = tmp->next;
-// 	}
-// 	sort_arr(arr, stack_a, ac);
-// }
-
-// void	sort_arr(void *arr, t_stack *stack_a, int ac)
-// {
-// 	int	len;
-// 	int	mid;
-
-// 	len = ac - 1;
-// 	mid = ac / 2;
-// 	printf("arr : %p, stack_a addr : %p\n", arr, stack_a);
-// 	quick_sort(arr, 0, len);
-// }
-
-// void	quick_sort(void *arr, int left, int right) //고치기(인덱스를 통해 숫자가 나오도록, 정렬에 따라 인덱스도 변경되도록 하기)
-// {	int	pivot;
-
-// 	pivot = 0;
-// 	if (left >= right)
-// 		return ;
-// 	pivot = (left + right) / 2;
-
-// 	quick_sort(arr, left, pivot - 1);
-// 	quick_sort(arr, pivot + 1, right);
-// }
-
-// int	find_pivot(t_stack *stack_a, int ac)
-// {
-// 	int		pivot;
-// 	t_elem	*tmp;
-
-// 	tmp = stack_a->head;
-// 	pivot = tmp->num;
+void	sort_arr(t_elem **order_arr, int ac)
+{
+	int		i;
+	int		j;
+	int		tmp_ord;
+	t_elem	*tmp;
 	
-// }
+	i = 0;
+	j = i + 1;
+	tmp_ord = 0;
+	tmp = 0;
+	while (i < ac)
+	{
+		j = i + 1;
+		while (j < ac - 1)
+		{
+			if (order_arr[i]->num > order_arr[j]->num)
+			{
+				tmp_ord = order_arr[i]->order;
+				tmp = order_arr[i];
+				order_arr[i]->order = order_arr[j]->order;
+				order_arr[i] = order_arr[j];
+				order_arr[j]->order = tmp_ord;
+				order_arr[j] = tmp;
+				tmp = 0;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	print_arr(t_elem **order_arr, int ac)
+{
+	int	i;
+
+	i = 0;
+	while (i < (ac - 1))
+	{
+		// order_arr[i]->order = i + 1;
+		printf("order_arr[%d] :%p, num : %d, order : %d\n", \
+			i, order_arr[i], order_arr[i]->num, order_arr[i]->order);
+		i++;
+	}
+}
 

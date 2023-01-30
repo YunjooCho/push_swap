@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/28 19:26:28 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/30 21:24:54 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	sort_under_five(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt)
 {
 	printf("stack b addr : %p\n", stack_b);
-	// printf("sort_arr addr : %p\n", sort_arr);
 	if (stack_a->cnt == 1)
 		return ;
 	else if (stack_a->cnt == 2)
