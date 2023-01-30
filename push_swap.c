@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 21:23:46 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/30 21:29:12 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 	parsing_argv(av, &stack_a);
 	setting_order(order_arr, &stack_a, ac);
 	if (stack_a.cnt <= 5)
-		sort_under_five(&stack_a, &stack_b, &cmd_cnt);
+		sort_under_five(&stack_a, &stack_b, order_arr, &cmd_cnt);
 	else
 		sort_deque(&stack_a, &stack_b, &cmd_cnt);
 	printf("stack a =============\n");

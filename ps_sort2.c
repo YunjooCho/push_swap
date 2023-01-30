@@ -6,30 +6,25 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 21:25:24 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/30 22:14:58 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two_elem(t_stack *stack, int *cmd_cnt)
+void	sort_two_elem(t_stack *stack, t_elem **order_arr, int *cmd_cnt)
 {
-	int		ord;
 	t_elem	*tmp;
 
-	ord = 0;
 	tmp = stack->head;
-	if (tmp->num > tmp->next->num)
+	if (tmp->order > tmp->next->order)
 	{
-		ord = tmp->order;
-		tmp->order = tmp->next->order;
-		tmp->next->order = ord;
 		cmd_rarb(stack);
 		(*cmd_cnt)++;
 	}
 }
 
-void	sort_tree_elem(t_stack *stack_a, int *cmd_cnt)
+void	sort_three_elem(t_stack *stack_a, t_elem **order_arr, int *cmd_cnt)
 {
 	int	check[3];
 	int	len;
@@ -62,9 +57,31 @@ void	sort_tree_elem(t_stack *stack_a, int *cmd_cnt)
 	}
 }
 
-void	sort_four_elem(t_stack *stack_a, int *cmd_cnt)
+void	sort_four_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr, int *cmd_cnt)
 {
-	
+	int		mid;
+	t_elem	*tmp;
+
+	mid = 0;
+	tmp = stack_a->head;
+	if (tmp->order == 1)
+	{
+		cmd_papb(stack_a, stack_b);
+		cmd_cnt++;
+	}
+	else if (tmp->order == 4)
+	{	
+		cmd_rrarrb(stack_a);
+		cmd_cnt++;
+	}
+	if (tmp->next->order == 1)
+	{
+		cmd_sasb(stack_a);
+		cmd_cnt++;
+	}
+	sort_tree_elem(stack_a, order_arr, cmd_cnt);
+	cmd_papb(stack_b, stack_a);
+	cmd_cnt++;
 }
 
 void	init_checkarr(t_stack *stack_a, int *check, int len)
@@ -79,7 +96,7 @@ void	init_checkarr(t_stack *stack_a, int *check, int len)
 	while (idx < len && j)
 	{
 		// printf("i : %d, j : %d\n", i->num, j->num);
-		if (j->num - i->num < 0)
+		if (j->order - i->order < 0)
 			check[idx] = 0;
 		else
 			check[idx] = 1;

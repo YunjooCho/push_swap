@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 19:44:26 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/30 21:37:06 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@
 # include "libft.h"
 # include "limits.h"
 # include "ps_deque.h"
-
-// typedef struct s_array
-// {
-// 	int		order;
-// 	t_elem	*elem;
-// }	t_array;
 
 void	print_arg(int ac, char **av);
 void	print_exit(int flag);
@@ -40,11 +34,11 @@ void	cmd_sasb(t_stack *stack);
 void	cmd_papb(t_stack *stack_from, t_stack *stack_to);
 void	cmd_rarb(t_stack *stack);
 void	cmd_rrarrb(t_stack *stack);
-void	sort_under_five(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt);
+void	sort_under_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr, int *cmd_cnt);
 void	init_checkarr(t_stack *stack_a, int *check, int len);
-void	sort_two_elem(t_stack *stack, int *cmd_cnt);
-void	sort_tree_elem(t_stack *stack, int *cmd_cnt);
-void	sort_four_elem(t_stack *stack_a, int *cmd_cnt);
+void	sort_two_elem(t_stack *stack, t_elem **order_arr, int *cmd_cnt);
+void	sort_tree_elem(t_stack *stack, t_elem **order_arr, int *cmd_cnt);
+void	sort_four_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr, int *cmd_cnt);
 void	sort_deque(t_stack *stack_a, t_stack *stack_b, int *cmd_cnt);
 void	setting_order(t_elem **order_arr, t_stack *stack_a, int ac);
 
