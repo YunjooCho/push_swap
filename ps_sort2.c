@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 22:14:58 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/31 21:22:17 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ void	sort_two_elem(t_stack *stack, t_elem **order_arr, int *cmd_cnt)
 {
 	t_elem	*tmp;
 
+	printf("test order_arr : %p\n", order_arr[0]);
 	tmp = stack->head;
 	if (tmp->order > tmp->next->order)
-	{
-		cmd_rarb(stack);
-		(*cmd_cnt)++;
-	}
+		cmd_rarb(stack, "ra", cmd_cnt);
 }
 
 void	sort_three_elem(t_stack *stack_a, t_elem **order_arr, int *cmd_cnt)
@@ -30,6 +28,7 @@ void	sort_three_elem(t_stack *stack_a, t_elem **order_arr, int *cmd_cnt)
 	int	len;
 
 	len = 3;
+	printf("three order_arr : %p\n", order_arr);
 	init_checkarr(stack_a, check, len);
 	while (1)
 	{
@@ -37,21 +36,18 @@ void	sort_three_elem(t_stack *stack_a, t_elem **order_arr, int *cmd_cnt)
 			return ;
 		if (!check[0] && !check[1] && check[2])
 		{
-			cmd_rarb(stack_a);
-			(*cmd_cnt)++;
+			cmd_rarb(stack_a, "ra", cmd_cnt);
 			init_checkarr(stack_a, check, len);
 			continue ;
 		}
 		if (!check[1])
 		{
-			cmd_sasb(stack_a);
-			(*cmd_cnt)++;
+			cmd_sasb(stack_a, "sa", cmd_cnt);
 			init_checkarr(stack_a, check, len);
 		}
 		if (!check[2])
 		{
-			cmd_rrarrb(stack_a);
-			(*cmd_cnt)++;
+			cmd_rrarrb(stack_a, "rra", cmd_cnt);
 			init_checkarr(stack_a, check, len);
 		}
 	}
@@ -59,29 +55,59 @@ void	sort_three_elem(t_stack *stack_a, t_elem **order_arr, int *cmd_cnt)
 
 void	sort_four_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr, int *cmd_cnt)
 {
-	int		mid;
 	t_elem	*tmp;
 
-	mid = 0;
 	tmp = stack_a->head;
-	if (tmp->order == 1)
+	while (1)
 	{
-		cmd_papb(stack_a, stack_b);
-		cmd_cnt++;
+		tmp = stack_a->head;
+		if (stack_a->cnt == 4 && check_sort(stack_a))
+		{
+			printf("End\n");
+			return ; 
+		}
+		if (tmp->order == 1 && stack_a->cnt == 4)
+			cmd_papb(stack_a, stack_b, "pb", cmd_cnt);
+		else if (tmp->order == 3 || tmp->order == 4)
+		{
+			cmd_rarb(stack_a, "ra", cmd_cnt);
+			continue ;
+		}
+		tmp = stack_a->head;
+		if (tmp->next->order == 1)
+		{
+			cmd_sasb(stack_a, "sa", cmd_cnt);
+			continue ;
+		}
+		if (stack_a->cnt == 4 && tmp->order == 2)
+			cmd_papb(stack_a, stack_b, "pb", cmd_cnt);
+		if (stack_a->cnt == 3)
+		{
+			sort_three_elem(stack_a, order_arr, cmd_cnt);
+			cmd_papb(stack_b, stack_a, "pa", cmd_cnt);
+		}
 	}
-	else if (tmp->order == 4)
-	{	
-		cmd_rrarrb(stack_a);
-		cmd_cnt++;
-	}
-	if (tmp->next->order == 1)
+}
+
+void	sort_five_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr, int *cmd_cnt)
+{
+	t_elem	*tmp;
+
+	printf("five order_arr : %p\n", order_arr);
+	tmp = stack_a->head;
+	while (1)
 	{
-		cmd_sasb(stack_a);
-		cmd_cnt++;
+		if (stack_a->head->order != 5)
+			cmd_rrarrb(stack_a, "rra", cmd_cnt);
+		else
+		{
+			cmd_papb(stack_a, stack_b, "pb", cmd_cnt);
+			sort_four_elem(stack_a, stack_b, order_arr, cmd_cnt);
+			cmd_papb(stack_b, stack_a, "pa", cmd_cnt);
+			cmd_rrarrb(stack_a, "rra", cmd_cnt); 
+			break;
+		}
 	}
-	sort_tree_elem(stack_a, order_arr, cmd_cnt);
-	cmd_papb(stack_b, stack_a);
-	cmd_cnt++;
 }
 
 void	init_checkarr(t_stack *stack_a, int *check, int len)
@@ -112,4 +138,22 @@ void	init_checkarr(t_stack *stack_a, int *check, int len)
 	// printf("check[0] : %d\n", check[0]);
 	// printf("check[1] : %d\n", check[1]);
 	// printf("check[2] : %d\n", check[2]);
+} 
+
+int	check_sort(t_stack *stack_a)
+{
+	int		i;
+	t_elem	*tmp;
+
+	i = 0;
+	tmp = stack_a->head;
+	while (i < stack_a->cnt && tmp)
+	{
+		if (tmp->order != (i + 1))
+			return (0);
+		// order_arr[i] = tmp;
+		tmp = tmp->next;
+		i++;
+	}
+	return (1);
 }

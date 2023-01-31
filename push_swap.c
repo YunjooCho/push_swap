@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 21:29:12 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/01/31 21:23:58 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	t_stack		stack_a;
 	t_stack		stack_b;
 	t_elem		**order_arr;
+	// int			**order_arr;
 	int			cmd_cnt;
 
 	cmd_cnt = 0;
@@ -45,3 +46,5 @@ int	main(int ac, char **av)
 	// system("leaks push_swap");
 	return (0);
 }
+
+// |wc -l
