@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 21:23:37 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/03 20:23:32 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_matrix(char **arr)
 	free(arr);
 }
 
-void	setting_order(t_elem **order_arr, t_stack *stack_a, int ac)
+t_elem	**setting_order(t_elem **order_arr, t_stack *stack_a, int ac)
 {
 	int		i;
 	t_elem	*tmp;
@@ -39,11 +39,14 @@ void	setting_order(t_elem **order_arr, t_stack *stack_a, int ac)
 		tmp = tmp->next;
 		i++;
 	}
-	sort_arr(order_arr, ac);
+	order_arr = sort_arr(order_arr, ac);
+	if (!check_arr(order_arr, ac))
+		print_exit(1);
 	print_arr(order_arr, ac);
+	return (order_arr);
 }
 
-void	sort_arr(t_elem **order_arr, int ac)
+t_elem	**sort_arr(t_elem **order_arr, int ac)
 {
 	int		i;
 	int		j;
@@ -73,6 +76,28 @@ void	sort_arr(t_elem **order_arr, int ac)
 		}
 		i++;
 	}
+	return (order_arr);
+}
+
+int	check_arr(t_elem **order_arr, int ac)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 1;
+	if (!order_arr)
+		print_exit(1);
+	while (j < (ac - 1))
+	{
+		if (order_arr[i]->order == order_arr[j]->order)
+			return (0);
+		if (order_arr[i]->order != j)
+			return (0);
+		i++;
+		j++;
+	}
+	return (1);
 }
 
 void	print_arr(t_elem **order_arr, int ac)
@@ -82,10 +107,23 @@ void	print_arr(t_elem **order_arr, int ac)
 	i = 0;
 	while (i < (ac - 1))
 	{
-		// order_arr[i]->order = i + 1;
 		printf("order_arr[%d] :%p, num : %d, order : %d\n", \
 			i, order_arr[i], order_arr[i]->num, order_arr[i]->order);
 		i++;
 	}
 }
 
+void	free_orderarr(t_elem **order_arr, int ac)
+{
+	int	i;
+
+	i = 0;
+	while (i < (ac - 1))
+	{
+		printf("free : %p\n", order_arr[i]);
+		if (order_arr[i])
+			free(order_arr[i]);
+		i++;
+	}
+	free(order_arr);
+}

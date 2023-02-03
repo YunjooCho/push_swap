@@ -40,7 +40,7 @@
 // 	}
 // }
 
-void	cmd_sasb(t_stack *stack, char *str, int *cmd_cnt)
+void	cmd_sasb(t_stack *stack, char *str)
 {
 	t_elem	*tmp_top;
 	t_elem	*tmp_sec;
@@ -56,10 +56,9 @@ void	cmd_sasb(t_stack *stack, char *str, int *cmd_cnt)
 	free(tmp_top);
 	free(tmp_sec);
 	printf("%s\n", str);
-	(*cmd_cnt)++;
 }
 
-void	cmd_papb(t_stack *stack_from, t_stack *stack_to, char *str, int *cmd_cnt)
+void	cmd_papb(t_stack *stack_from, t_stack *stack_to, char *str)
 {
 	t_elem	*tmp;
 
@@ -68,12 +67,11 @@ void	cmd_papb(t_stack *stack_from, t_stack *stack_to, char *str, int *cmd_cnt)
 		return ;
 	tmp = pop_front(stack_from);
 	append_front(stack_to, tmp->num, &tmp->order);
-	// free(tmp);
+	free(tmp);
 	printf("%s\n", str);
-	(*cmd_cnt)++;
 }
 
-void	cmd_rarb(t_stack *stack, char *str, int *cmd_cnt)
+void	cmd_rarb(t_stack *stack, char *str)
 {
 	t_elem	*tmp;
 
@@ -86,10 +84,9 @@ void	cmd_rarb(t_stack *stack, char *str, int *cmd_cnt)
 	// print_deque(stack);//TODO - 삭제
 	free(tmp);
 	printf("%s\n", str);
-	(*cmd_cnt)++;
 }
 
-void	cmd_rrarrb(t_stack *stack, char *str, int *cmd_cnt)
+void	cmd_rrarrb(t_stack *stack, char *str)
 {
 	t_elem	*tmp;
 
@@ -100,7 +97,6 @@ void	cmd_rrarrb(t_stack *stack, char *str, int *cmd_cnt)
 	append_front(stack, tmp->num, &tmp->order);
 	// printf("append\n");//TODO - 삭제
 	// print_deque(stack);//TODO - 삭제
-	free(tmp);
+	free(tmp); //TODO - 삭제 double leaks 처리 때문에 주석
 	printf("%s\n", str);
-	(*cmd_cnt)++;
 }
