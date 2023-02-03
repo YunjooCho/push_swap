@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/03 20:23:32 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/03 20:39:34 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,15 @@ int	check_arr(t_elem **order_arr, int ac)
 		print_exit(1);
 	while (j < (ac - 1))
 	{
-		if (order_arr[i]->order == order_arr[j]->order)
+		if (order_arr[i]->num == order_arr[j]->num)
 			return (0);
 		if (order_arr[i]->order != j)
 			return (0);
 		i++;
 		j++;
 	}
+	if (order_arr[i]->order != j)
+		return (0);
 	return (1);
 }
 

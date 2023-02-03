@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/03 19:44:34 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/03 20:37:29 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ void	init_checkarr(t_stack *stack_a, int *check, int len)
 	j = stack_a->tail;
 	while (idx < len && j)
 	{
-		// printf("i : %d, j : %d\n", i->num, j->num);
 		if (j->order - i->order < 0)
 			check[idx] = 0;
 		else
@@ -140,9 +139,6 @@ void	init_checkarr(t_stack *stack_a, int *check, int len)
 		i = i->next;
 		j = j->next;
 	}
-	// printf("check[0] : %d\n", check[0]);
-	// printf("check[1] : %d\n", check[1]);
-	// printf("check[2] : %d\n", check[2]);
 } 
 
 int	check_sort(t_stack *stack_a)

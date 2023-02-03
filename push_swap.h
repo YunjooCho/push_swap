@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/03 20:18:47 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/03 21:14:28 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	reverse_two_elem(t_stack *stack);
 void	sort_three_elem(t_stack *stack_a, t_elem **order_arr);
 void	sort_four_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr);
 void	sort_five_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr);
-void	sort_deque(t_stack *stack_a, t_stack *stack_b);
+void	sort_deque(t_stack *stack_a, t_stack *stack_b, int ac);
 t_elem	**setting_order(t_elem **order_arr, t_stack *stack_a, int ac);
 int		check_arr(t_elem **order_arr, int ac);
 int		check_sort(t_stack *stack_a);

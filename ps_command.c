@@ -51,8 +51,6 @@ void	cmd_sasb(t_stack *stack, char *str)
 	tmp_sec = pop_front(stack);
 	append_front(stack, tmp_top->num, &tmp_top->order);
 	append_front(stack, tmp_sec->num, &tmp_sec->order);
-	// printf("append\n");//TODO - 삭제
-	// print_deque(stack);//TODO - 삭제
 	free(tmp_top);
 	free(tmp_sec);
 	printf("%s\n", str);
@@ -80,8 +78,6 @@ void	cmd_rarb(t_stack *stack, char *str)
 		return ;
 	tmp = pop_front(stack);
 	append_back(stack, tmp->num, &tmp->order);
-	// printf("append\n");//TODO - 삭제
-	// print_deque(stack);//TODO - 삭제
 	free(tmp);
 	printf("%s\n", str);
 }
@@ -95,8 +91,6 @@ void	cmd_rrarrb(t_stack *stack, char *str)
 		return ;
 	tmp = pop_back(stack);
 	append_front(stack, tmp->num, &tmp->order);
-	// printf("append\n");//TODO - 삭제
-	// print_deque(stack);//TODO - 삭제
-	free(tmp); //TODO - 삭제 double leaks 처리 때문에 주석
+	free(tmp);
 	printf("%s\n", str);
 }

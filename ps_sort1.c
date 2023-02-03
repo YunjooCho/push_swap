@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/03 19:45:05 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/03 21:27:28 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,11 @@ void	sort_under_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 		sort_four_elem(stack_a, stack_b, order_arr);
 	else if (stack_a->cnt == 5)
 		sort_five_elem(stack_a, stack_b, order_arr);
-	// system("leaks push_swap");
 }
 
-void	sort_deque(t_stack *stack_a, t_stack *stack_b)
+void	sort_deque(t_stack *stack_a, t_stack *stack_b, int ac)
 {
-	int	num;
-
-	num = 0;
-	printf("stack_a : %p\n", stack_a);
-	printf("stack_b : %p\n", stack_b);
-	// while (stack_a->cnt)
-	// {
-	// 	// ps_command("pb", stack_a, stack_b);
-	// 	cmd_papb(stack_a, stack_b, "pa");
-	// 	cmd_cnt++;
-	// }
+	int	pia;
+	int	pib;
+	int cnt[3];
 }
