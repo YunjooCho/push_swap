@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/05 20:03:11 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/05 20:28:53 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	print_arr(t_elem **order_arr, int ac);
 void	init_lengarr(int *arr, int ac);
 void	init_pivot(int *pia, int *pib, int ac);
 void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib);
+void	move_stacka(t_stack *stack_a, t_stack *stack_b, int pia, int pib);
 
 void	free_orderarr(t_elem **order_arr, int ac); //leaks 필요없으면 지우기
 
