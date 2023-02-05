@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/03 20:41:33 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/05 19:04:44 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	parsing_argv(char **av, t_stack *stack)
 	order = 1;
 	while (av[i])
 	{
-		// printf("str : %s str_len : %d\n", av[idx], str_len);
 		split_atoi(av[i], stack, &order);
 		i++;
 	}

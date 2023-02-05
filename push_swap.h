@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/03 21:14:28 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/05 20:03:11 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,15 @@ void	reverse_two_elem(t_stack *stack);
 void	sort_three_elem(t_stack *stack_a, t_elem **order_arr);
 void	sort_four_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr);
 void	sort_five_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr);
-void	sort_deque(t_stack *stack_a, t_stack *stack_b, int ac);
+void	sort_above_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr);
 t_elem	**setting_order(t_elem **order_arr, t_stack *stack_a, int ac);
 int		check_arr(t_elem **order_arr, int ac);
 int		check_sort(t_stack *stack_a);
 t_elem	**sort_arr(t_elem **order_arr, int ac);
 void	print_arr(t_elem **order_arr, int ac);
 void	init_lengarr(int *arr, int ac);
+void	init_pivot(int *pia, int *pib, int ac);
+void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib);
 
 void	free_orderarr(t_elem **order_arr, int ac); //leaks 필요없으면 지우기
 

@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/03 21:14:16 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/05 20:04:40 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 	if (stack_a.cnt <= 5)
 		sort_under_five(&stack_a, &stack_b, order_arr);
 	else
-		sort_deque(&stack_a, &stack_b, ac);
+		sort_above_five(&stack_a, &stack_b, order_arr);
 	printf("stack a =============\n");
 	print_deque(&stack_a);
 	printf("stack b =============\n");

@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:04:56 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 19:05:54 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/05 19:05:04 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,15 @@ void	split_atoi(char *str, t_stack *stack, int *order)
 	int		i;
 
 	arr = ft_split(str, ' ');
-	// printf("split_arg arr : %p %s\n", arr, arr[0]);
 	i = 0;
 	if (!arr[i])
 		print_exit(1);
 	while (arr[i])
 	{
-		// printf("arr[%d] : %s , len : %zu\n", i, arr[i], ft_strlen(arr[i]));
 		res = ps_atoi(arr[i]);
 		append_back(stack, res, order);
 		i++;
 		(*order)++;
-		// printf("res , %d, i : %d\n", res, i);
 	}
 	free_matrix(arr);
 }
