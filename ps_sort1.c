@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/06 17:49:44 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/06 20:37:04 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	sort_above_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 	init_pivot(&pia, &pib, len);
 	move_stackb(stack_a, stack_b, pia, pib);
 	sort_three_elem(stack_a, order_arr);
+	move_stacka(stack_a, stack_b);
 }
 
 void	init_pivot(int *pia, int *pib, int len)
@@ -70,28 +71,36 @@ void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib)
 	}
 }
 
-void	move_stacka(t_stack *stack_a, t_stack *stack_b, int pia, int pib)
+void	move_stacka(t_stack *stack_a, t_stack *stack_b)
 {
-	int	cnt;
+	t_stack *tmp;
 
-	cnt = 0;
-	printf("--pia : %d, pib : %d\n", pia, pib);
-	while (cnt < 3)
+	tmp = stack_a;
+	min_movecnt(stack_b);
+}
+
+void	min_movecnt(t_stack *stack_b)
+{
+	int		min_idx;
+	int		a_cnt;
+	int		b_cnt;
+	int		mid;
+	t_elem 	*tmp;
+
+	min_idx = -1;
+	a_cnt = 0;
+	b_cnt = 1;//pa
+	mid = stack_b->cnt / 2;
+	tmp = stack_b->head;
+	while (tmp->next)
 	{
-		if (stack_b->head->order < pia)
-		{
-			cmd_papb(stack_b, stack_a, "pa");
-			cnt++;
-			if (cnt > 1 && stack_a->head->order > stack_a->head->next->order)
-				cmd_sasb(stack_a, "sa");
-		}
+		b_cnt = 1;//pa
+		if (tmp->idx <= mid)
+			b_cnt += tmp->idx;
 		else
-			cmd_rarb(stack_b, "rb");
+			b_cnt += stack_b->cnt - tmp->idx;
+		tmp->move_cnt = b_cnt;
+		tmp = tmp->next;
 	}
-	cnt = 0;
-	while (cnt < 3)
-	{
-		cmd_rarb(stack_a, "ra");
-		cnt++;
-	}
+	tmp->move_cnt = 1;
 }

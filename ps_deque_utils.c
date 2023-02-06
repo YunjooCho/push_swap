@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:03:42 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/06 17:49:10 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/06 20:26:45 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_element(t_elem *element, int num, int *order)
 	element->num = num;
 	element->idx = 0;
 	element->order = *order;
+	element->move_cnt = 0;
 	element->prev = NULL;
 	element->next = NULL;
 	// printf("init_elem idx : %d, num : %d\n", element->idx, element->num);
@@ -59,8 +60,8 @@ void	print_deque(t_stack *deque)
 	tmp = deque->head;
 	while (tmp)
 	{
-		printf("elem[%d] :%p, num : %d, order : %d, prev : %p, next : %p\n", \
-			tmp->order, tmp, tmp->num, tmp->order, tmp->prev, tmp->next);
+		printf("elem[%d] :%p, num : %d, idx: %d, order : %d, movcnt : %d, prev : %p, next : %p\n", \
+			tmp->order, tmp, tmp->num, tmp->idx, tmp->order, tmp->move_cnt, tmp->prev, tmp->next);
 		tmp = tmp->next;
 	}
 }
