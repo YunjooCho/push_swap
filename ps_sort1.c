@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/05 20:36:44 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:49:44 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,17 @@ void	sort_above_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 	pib = 0;
 	len = stack_a->cnt;
 	init_pivot(&pia, &pib, len);
-	printf("pia : %d, pib : %d\n", pia, pib);
 	move_stackb(stack_a, stack_b, pia, pib);
 	sort_three_elem(stack_a, order_arr);
-	// move_stacka(stack_a, stack_b, pia, pib);
 }
 
-void	init_pivot(int *pia, int *pib, int ac)
+void	init_pivot(int *pia, int *pib, int len)
 {
 	int	div;
 	int	mod;
 
-	mod = (ac - 1) % 3;
-	div = (ac - 1) / 3;
+	mod = len % 3;
+	div = len / 3;
 	*pia = 4;
 	*pib = div * 2 + 1;
 	if (mod == 2)
@@ -60,12 +58,13 @@ void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib)
 	while (stack_a->cnt > 3) //TODO - 왜 3인지??
 	{
 		if (stack_a->head->order >= pib)
-			cmd_papb(stack_a, stack_b, "pb");
-		else if (pia <= stack_a->head->order)
 		{
 			cmd_papb(stack_a, stack_b, "pb");
-			cmd_rarb(stack_b, "rb");
+			if (stack_b->cnt != 0)
+				cmd_rarb(stack_b, "rb");
 		}
+		else if (pia <= stack_a->head->order)
+			cmd_papb(stack_a, stack_b, "pb");
 		else
 			cmd_rarb(stack_a, "ra");
 	}
@@ -73,15 +72,26 @@ void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib)
 
 void	move_stacka(t_stack *stack_a, t_stack *stack_b, int pia, int pib)
 {
-	while (stack_b->cnt)
+	int	cnt;
+
+	cnt = 0;
+	printf("--pia : %d, pib : %d\n", pia, pib);
+	while (cnt < 3)
 	{
-		cmd_papb(stack_b, stack_a, "pa");
-		if (stack_a->head->order == stack_a->cnt)
-			cmd_rarb(stack_a, "ra");
-		else if (stack_a->cnt != 4)
+		if (stack_b->head->order < pia)
 		{
-			if (stack_a->head->order > stack_a->head->next->order)
+			cmd_papb(stack_b, stack_a, "pa");
+			cnt++;
+			if (cnt > 1 && stack_a->head->order > stack_a->head->next->order)
 				cmd_sasb(stack_a, "sa");
 		}
+		else
+			cmd_rarb(stack_b, "rb");
+	}
+	cnt = 0;
+	while (cnt < 3)
+	{
+		cmd_rarb(stack_a, "ra");
+		cnt++;
 	}
 }

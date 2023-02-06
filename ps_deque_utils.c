@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:03:42 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 19:03:28 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:49:10 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_deque(t_stack *deque)
 void	init_element(t_elem *element, int num, int *order)
 {
 	element->num = num;
+	element->idx = 0;
 	element->order = *order;
 	element->prev = NULL;
 	element->next = NULL;

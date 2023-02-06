@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/05 20:28:53 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/06 15:38:59 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		check_sort(t_stack *stack_a);
 t_elem	**sort_arr(t_elem **order_arr, int ac);
 void	print_arr(t_elem **order_arr, int ac);
 void	init_lengarr(int *arr, int ac);
-void	init_pivot(int *pia, int *pib, int ac);
+void	init_pivot(int *pia, int *pib, int len);
 void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib);
 void	move_stacka(t_stack *stack_a, t_stack *stack_b, int pia, int pib);
 

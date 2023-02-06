@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/05 19:04:20 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/06 15:45:06 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_elem	**setting_order(t_elem **order_arr, t_stack *stack_a, int ac)
 	order_arr = sort_arr(order_arr, ac);
 	if (!check_arr(order_arr, ac))
 		print_exit(1);
-	print_arr(order_arr, ac);
+	// print_arr(order_arr, ac);
 	return (order_arr);
 }
 
