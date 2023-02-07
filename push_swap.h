@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/06 20:28:27 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/07 20:44:12 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	move_stacka(t_stack *stack_a, t_stack *stack_b);
 void	init_movecnt(t_stack *stack_b);
 
 void	free_orderarr(t_elem **order_arr, int ac); //leaks 필요없으면 지우기
-void	min_movecnt(t_stack *stack_b);
+void	check_moveidx(t_stack *stack_a, t_stack *stack_b, int b_mid);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/06 17:17:29 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/07 20:47:47 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ int	main(int ac, char **av)
 	// system("leaks push_swap");
 	return (0);
 }
+//wc -l
 
-// |wc -l
+//2023.02.07 calculate_movecnta 완성하기
+//stack_a의 front->order / back->order와 stack_b의 head->order 크기 비교
+//stack_a를 어떤 명령어로 몇 번 움직일지 규칙정하기

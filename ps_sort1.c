@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/06 20:37:04 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/07 20:46:02 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,34 +73,57 @@ void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib)
 
 void	move_stacka(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack *tmp;
+	int		b_mid;
 
-	tmp = stack_a;
-	min_movecnt(stack_b);
+	b_mid = stack_b->cnt / 2;
+	check_movecnt(stack_a, stack_b, b_mid);
+	
 }
 
-void	min_movecnt(t_stack *stack_b)
+void	check_movecnt(t_stack *stack_a, t_stack *stack_b, int mid)
 {
 	int		min_idx;
-	int		a_cnt;
-	int		b_cnt;
-	int		mid;
+	int		min_cnt;
+	int		total_cnt;
 	t_elem 	*tmp;
 
 	min_idx = -1;
-	a_cnt = 0;
-	b_cnt = 1;//pa
-	mid = stack_b->cnt / 2;
+	min_cnt = 2147483647;
+	total_cnt = 1; //pa
 	tmp = stack_b->head;
-	while (tmp->next)
+	while (tmp)
 	{
-		b_cnt = 1;//pa
-		if (tmp->idx <= mid)
-			b_cnt += tmp->idx;
-		else
-			b_cnt += stack_b->cnt - tmp->idx;
-		tmp->move_cnt = b_cnt;
+		// if (tmp->idx <= mid) //rb
+		// 	tmp->b_cnt += tmp->idx;
+		// else //rrb
+		// 	tmp->b_cnt += stack_b->cnt - tmp->idx;
+		calculate_movecntb(stack_b, tmp, mid);
+		calculate_movecnta(stack_a, stack_b, tmp);
+		total_cnt = tmp->a_cnt + tmp->b_cnt;
+		if (total_cnt < min_cnt)
+		{
+			min_cnt = total_cnt;
+			min_idx = tmp->idx;
+		}
 		tmp = tmp->next;
 	}
-	tmp->move_cnt = 1;
+}
+
+int	calculate_movecntb(t_stack *stack_b, t_elem *tmp, int mid)
+{
+	if (tmp->idx <= mid) //rb
+		tmp->b_cnt += tmp->idx;
+	else //rrb
+		tmp->b_cnt += stack_b->cnt - tmp->idx;
+}
+
+int	calculate_movecnta(t_stack *stack_a, t_stack *stack_b, t_elem *tmp)
+{	
+	int		a_mid;
+	t_elem	*front;
+	t_elem	*back;
+
+	a_mid = stack_a->cnt / 2;
+	front = stack_a->tail;
+	back = stack_a->head;
 }
