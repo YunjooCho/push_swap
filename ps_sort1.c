@@ -6,27 +6,27 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/09 23:38:30 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/10 00:24:18 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_under_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
+void	sort_under_five(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->cnt == 1)
 		return ;
 	else if (stack_a->cnt == 2)
-		sort_two_elem(stack_a, stack_b, order_arr);
+		sort_two_elem(stack_a, stack_b);
 	else if (stack_a->cnt == 3)
-		sort_three_elem(stack_a, stack_b, order_arr);
+		sort_three_elem(stack_a, stack_b);
 	else if (stack_a->cnt == 4)
-		sort_four_elem(stack_a, stack_b, order_arr);
+		sort_four_elem(stack_a, stack_b);
 	else if (stack_a->cnt == 5)
-		sort_five_elem(stack_a, stack_b, order_arr);
+		sort_five_elem(stack_a, stack_b);
 }
 
-void	sort_above_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
+void	sort_above_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int	pia;
 	int	pib;
@@ -37,7 +37,7 @@ void	sort_above_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 	len = stack_a->cnt;
 	init_pivot(&pia, &pib, len);
 	move_stackb(stack_a, stack_b, pia, pib);
-	sort_three_elem(stack_a, stack_b, order_arr);
+	sort_three_elem(stack_a, stack_b);
 	move_stacka(stack_a, stack_b);
 }
 
@@ -61,23 +61,13 @@ void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib)
 		if (stack_a->head->order >= pib)
 		{
 			ps_command("pb", stack_a, stack_b);
-			// cmd_papb(stack_a, stack_b, "pb");
 			if (stack_b->cnt != 0)
-			{
-				// cmd_rarb(stack_b, "rb");
 				ps_command("rb", stack_a, stack_b);
-			}
 		}
 		else if (pia <= stack_a->head->order)
-		{
 			ps_command("pb", stack_a, stack_b);
-			// cmd_papb(stack_a, stack_b, "pb");
-		}
 		else
-		{
 			ps_command("ra", stack_a, stack_b);
-			// cmd_rarb(stack_a, "ra");
-		}
 	}
 }
 
@@ -85,12 +75,19 @@ void	move_stacka(t_stack *stack_a, t_stack *stack_b)
 {
 	t_elem	*move_elem;
 
-	while (stack_b->cnt)
-	{
-		move_elem = check_movecnt(stack_a, stack_b);
-		moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
-	}
-	
+	move_elem = check_movecnt(stack_a, stack_b);
+	// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+	// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	move_elem = check_movecnt(stack_a, stack_b);
+	printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+		move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	// moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	// while (stack_b->cnt)
+	// {
+	// 	move_elem = check_movecnt(stack_a, stack_b);
+	// 	// moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	// }
 }
 
 t_elem	*check_movecnt(t_stack *stack_a, t_stack *stack_b)
@@ -132,6 +129,7 @@ void	calculate_movecntb(t_stack *stack_b, t_elem *tmp)
 	int		b_mid;
 
 	b_mid = stack_b->cnt / 2;
+	tmp->b_cnt = 0;
 	if (tmp->idx <= b_mid) //rb
 		tmp->b_cnt += tmp->idx;
 	else //rrb
@@ -145,6 +143,7 @@ void	calculate_movecnta(t_stack *stack_a, t_elem *tmp)
 	
 	a_mid = stack_a->cnt / 2;
 	cur = stack_a->head;
+	tmp->a_cnt = 0;
 	while (cur->next)
 	{
 		if (tmp->order > stack_a->max)
@@ -154,27 +153,27 @@ void	calculate_movecnta(t_stack *stack_a, t_elem *tmp)
 				tmp->a_cnt = 0;
 				return ;
 			}
-			else
+			else if (cur->order == 1)
 			{
-				if (cur->order == 1)
-				{
-					if (cur->idx < a_mid)
-						tmp->a_cnt = cur->idx;
-					else
-						tmp->a_cnt = (stack_a->cnt - tmp->idx) * -1;
-					return ;
-				}
+				printf("hi\n");
+				printf("cur ord : %d idx : %d, curnext ord : %d idx : %d\n", cur->order, cur->idx, cur->next->order, cur->next->idx);
+				if (cur->idx < a_mid)
+					tmp->a_cnt = cur->idx;
+				else
+					tmp->a_cnt = (stack_a->cnt - tmp->idx) * -1;
+				return ;
 			}
 		}
 		else
 		{
 			if (cur->order > tmp->order && cur->next->order < tmp->order)
 			{
+				// printf("cur ord : %d idx : %d, curnext ord : %d idx : %d\n", cur->order, cur->idx, cur->next->order, cur->next->idx);
 				if (cur->next->order < a_mid)
 					tmp->a_cnt = cur->idx;
 				else
 					tmp->a_cnt = (stack_a->cnt - tmp->idx) * -1;
-				return ;
+				break ;
 			}
 		}
 		cur = cur->next;
@@ -183,14 +182,6 @@ void	calculate_movecnta(t_stack *stack_a, t_elem *tmp)
 
 void	moving_elem(t_stack *stack_a, t_stack *stack_b, int a_cnt, int b_cnt)
 {
-
-	//-1 -3
-	//-3 -2
-	//3   0
-	//0   3
-	//3   6
-	//4   2
-	
 	int	flag;
 	int	ab_move;
 	int	direction;
@@ -248,7 +239,6 @@ void	moving_elem(t_stack *stack_a, t_stack *stack_b, int a_cnt, int b_cnt)
 			ps_command("rb", stack_a, stack_b);
 		b_cnt--;
 	}
-	ps_command("pa", stack_a, stack_b);
 	while (a_cnt)
 	{
 		if (!flag)
@@ -257,5 +247,6 @@ void	moving_elem(t_stack *stack_a, t_stack *stack_b, int a_cnt, int b_cnt)
 			ps_command("ra", stack_a, stack_b);
 		a_cnt--;
 	}
+	ps_command("pa", stack_a, stack_b);
 	
 }

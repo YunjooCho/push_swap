@@ -6,20 +6,16 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/09 23:43:52 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/09 23:47:57 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
+void	sort_two_elem(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->head->order > stack_a->head->next->order)
-	{
 		ps_command("ra", stack_a, stack_b);
-		order_arr[0] = stack_a->head;
-		order_arr[1] = stack_a->tail;
-	}
 }
 
 void	reverse_two_elem(t_stack *stack_a, t_stack *stack_b)
@@ -28,13 +24,12 @@ void	reverse_two_elem(t_stack *stack_a, t_stack *stack_b)
 		ps_command("rb", stack_a, stack_b);
 }
 
-void	sort_three_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
+void	sort_three_elem(t_stack *stack_a, t_stack *stack_b)
 {
 	int	check[3];
 	int	len;
 
 	len = 3;
-	printf("three order_arr : %p\n", order_arr);
 	init_checkarr(stack_a, check, len);
 	while (1)
 	{
@@ -59,7 +54,7 @@ void	sort_three_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 	}
 }
 
-void	sort_four_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
+void	sort_four_elem(t_stack *stack_a, t_stack *stack_b)
 {
 	while (1)
 	{
@@ -83,13 +78,13 @@ void	sort_four_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 			ps_command("pb", stack_a, stack_b);
 		if (stack_a->cnt == 3)
 		{
-			sort_three_elem(stack_a, stack_b, order_arr);
+			sort_three_elem(stack_a, stack_b);
 			ps_command("pa", stack_a, stack_b);
 		}
 	}
 }
 
-void	sort_five_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
+void	sort_five_elem(t_stack *stack_a, t_stack *stack_b)
 {
 	int		cnt;
 	int		pivot;
@@ -108,7 +103,7 @@ void	sort_five_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 		else
 			ps_command("rra", stack_a, stack_b);
 	}
-	sort_three_elem(stack_a, stack_b, order_arr);
+	sort_three_elem(stack_a, stack_b);
 	reverse_two_elem(stack_a, stack_b);
 	ps_command("pa", stack_a, stack_b);
 	ps_command("pa", stack_a, stack_b);
