@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/10 04:23:00 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/10 05:06:36 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,46 +75,76 @@ void	move_stacka(t_stack *stack_a, t_stack *stack_b)
 {
 	t_elem	*move_elem;
 
-	while (stack_b->cnt)
-	{
-		move_elem = check_movecnt(stack_a, stack_b);
-		// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
-		// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
-		moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
-	}
+	move_elem = check_movecnt(stack_a, stack_b);
+	// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+	// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	move_elem = check_movecnt(stack_a, stack_b);
+	// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+	// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	move_elem = check_movecnt(stack_a, stack_b);
+	// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+	// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	move_elem = check_movecnt(stack_a, stack_b);
+	// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+	// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	move_elem = check_movecnt(stack_a, stack_b);
+	// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+	// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);	
+	move_elem = check_movecnt(stack_a, stack_b);
+	// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+	// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	move_elem = check_movecnt(stack_a, stack_b);	
+	printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+		move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	// moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	
+	//TODO - 디버깅 위치
+	// while (stack_b->cnt)
+	// {
+	// 	move_elem = check_movecnt(stack_a, stack_b);
+	// 	// printf("move_elem num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
+	// 	// 	move_elem->num, move_elem->idx, move_elem->order, move_elem->a_cnt, move_elem->b_cnt, move_elem->prev, move_elem->next);
+	// 	moving_elem(stack_a, stack_b, move_elem->a_cnt, move_elem->b_cnt);
+	// }
 
-	int idx = 0;
-	int cnt = 0;
-	if (stack_a->head->order != 1)
-	{
-		move_elem = stack_a->head;
-		while (move_elem)
-		{
-			if (move_elem->order == 1)
-			{
-				idx = move_elem->idx;
-				if (idx <= stack_a->cnt / 2)
-					cnt += move_elem->idx;
-				else
-					cnt += (stack_a->cnt - move_elem->idx) * -1;
-			}
-			move_elem = move_elem->next;
-		}
-	}
-	int flag = 1;
-	if (cnt < 0)
-	{
-		flag = 0;
-		cnt *= -1;
-	}
-	while (cnt)
-	{
-		if (!flag)
-			ps_command("rra", stack_a, stack_b);
-		else
-			ps_command("ra", stack_a, stack_b);
-		cnt--;
-	}
+	// int idx = 0;
+	// int cnt = 0;
+	// if (stack_a->head->order != 1)
+	// {
+	// 	move_elem = stack_a->head;
+	// 	while (move_elem)
+	// 	{
+	// 		if (move_elem->order == 1)
+	// 		{
+	// 			idx = move_elem->idx;
+	// 			if (idx <= stack_a->cnt / 2)
+	// 				cnt += move_elem->idx;
+	// 			else
+	// 				cnt += (stack_a->cnt - move_elem->idx) * -1;
+	// 		}
+	// 		move_elem = move_elem->next;
+	// 	}
+	// }
+	// int flag = 1;
+	// if (cnt < 0)
+	// {
+	// 	flag = 0;
+	// 	cnt *= -1;
+	// }
+	// while (cnt)
+	// {
+	// 	if (!flag)
+	// 		ps_command("rra", stack_a, stack_b);
+	// 	else
+	// 		ps_command("ra", stack_a, stack_b);
+	// 	cnt--;
+	// }
 }
 
 t_elem	*check_movecnt(t_stack *stack_a, t_stack *stack_b)
@@ -181,7 +211,7 @@ void	calculate_movecnta(t_stack *stack_a, t_elem *tmp)
 			}
 			else if (cur->order == 1)
 			{
-				if (cur->idx < a_mid)
+				if (cur->idx <= a_mid)
 					tmp->a_cnt = cur->idx;
 				else
 					tmp->a_cnt = (stack_a->cnt - cur->idx) * -1;
@@ -190,9 +220,10 @@ void	calculate_movecnta(t_stack *stack_a, t_elem *tmp)
 		}
 		else
 		{
+			printf("here\n");
 			if (tmp->order > cur->order && tmp->order < cur->next->order)
 			{
-				if (cur->next->order < a_mid)
+				if (cur->next->order <= a_mid)
 					tmp->a_cnt = cur->idx;
 				else
 					tmp->a_cnt = (stack_a->cnt - cur->next->idx) * -1;

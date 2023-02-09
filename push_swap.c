@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/10 04:24:16 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/10 04:52:56 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ int	main(int ac, char **av)
 		sort_under_five(&stack_a, &stack_b);
 	else
 		sort_above_five(&stack_a, &stack_b);
-	// printf("stack a =============\n");
-	// print_deque(&stack_a);
-	// printf("stack b =============\n");
-	// print_deque(&stack_b);
-	system("leaks push_swap");
+	printf("stack a =============\n");
+	print_deque(&stack_a);
+	printf("stack b =============\n");
+	print_deque(&stack_b);
+	// system("leaks push_swap");
 	return (0);
 }
-//wc -l
