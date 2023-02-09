@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/07 20:44:12 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/09 20:16:23 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	cmd_sasb(t_stack *stack, char *str);
 void	cmd_papb(t_stack *stack_from, t_stack *stack_to, char *str);
 void	cmd_rarb(t_stack *stack, char *str);
 void	cmd_rrarrb(t_stack *stack, char *str);
-void	init_index(t_stack *stack);
+void	init_idxmax(t_stack *stack);
 void	sort_under_five(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr);
 void	init_checkarr(t_stack *stack_a, int *check, int len);
 void	sort_two_elem(t_stack *stack, t_elem **order_arr);
@@ -54,7 +54,11 @@ void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib);
 void	move_stacka(t_stack *stack_a, t_stack *stack_b);
 void	init_movecnt(t_stack *stack_b);
 
+t_elem	*check_movecnt(t_stack *stack_a, t_stack *stack_b);
+void	calculate_movecntb(t_stack *stack_b, t_elem *tmp);
+void	calculate_movecnta(t_stack *stack_a, t_elem *tmp);
+// void	moving_elem(t_stack *stack_a, t_stack *stack_b, t_elem *move_elem);
+
 void	free_orderarr(t_elem **order_arr, int ac); //leaks 필요없으면 지우기
-void	check_moveidx(t_stack *stack_a, t_stack *stack_b, int b_mid);
 
 #endif

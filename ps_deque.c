@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:58:54 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/30 19:05:31 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/09 18:34:22 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	append_front(t_stack *deque, int num, int *order)
 		new_element->next = deque->head;
 		deque->head = new_element;
 	}
+	if (new_element->num > deque->max)
+		deque->max = new_element->num;
 	deque->cnt++;
 }
 
@@ -53,6 +55,8 @@ void	append_back(t_stack *deque, int num, int *order)
 		deque->tail->next = new_element;
 		deque->tail = new_element;
 	}
+	if (new_element->num > deque->max)
+		deque->max = new_element->num;
 	deque->cnt++;
 }
 
@@ -72,6 +76,7 @@ t_elem	*pop_front(t_stack *deque)
 		{
 			deque->head = 0;
 			deque->tail = 0;
+			deque->max = 0;
 		}
 		return (tmp);
 	}
@@ -94,6 +99,7 @@ t_elem	*pop_back(t_stack *deque)
 		{
 			deque->head = 0;
 			deque->tail = 0;
+			deque->max = 0;
 		}
 		return (tmp);
 	}

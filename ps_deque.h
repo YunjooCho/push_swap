@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:23:29 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/07 19:33:54 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/09 18:36:32 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_stack
 {
 	t_elem	*head;
 	t_elem	*tail;
+	int		max;
 	int		cnt;
 }	t_stack;
 

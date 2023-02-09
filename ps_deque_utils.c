@@ -6,26 +6,17 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:03:42 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/07 19:36:42 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/09 20:02:07 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// t_stack	*malloc_deque(void)
-// {
-// 	t_stack	*deque;
-
-// 	deque = (t_stack *)malloc(sizeof(t_stack));
-// 	if (deque)
-// 		init_deque(deque);
-// 	return (deque);
-// }
-
 void	init_deque(t_stack *deque)
 {
 	deque->head = NULL;
 	deque->tail = NULL;
+	deque->max = 0;
 	deque->cnt = 0;
 }
 
@@ -58,6 +49,7 @@ void	print_deque(t_stack *deque)
 	t_elem	*tmp;
 
 	tmp = deque->head;
+	printf("deque max : %d\n", deque->max);
 	while (tmp)
 	{
 		printf("elem[%d] :%p, num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \

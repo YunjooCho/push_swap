@@ -4,5 +4,6 @@
 		"ratio": "c",
 		"chrono": "c",
 		"limits": "c"
-	}
+	},
+	"C_Cpp.errorSquiggles": "disabled"
 }

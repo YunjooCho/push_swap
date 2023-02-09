@@ -54,7 +54,7 @@ void	cmd_sasb(t_stack *stack, char *str)
 	free(tmp_top);
 	free(tmp_sec);
 	printf("%s\n", str);
-	init_index(stack);
+	init_idxmax(stack);
 }
 
 void	cmd_papb(t_stack *stack_from, t_stack *stack_to, char *str)
@@ -68,8 +68,8 @@ void	cmd_papb(t_stack *stack_from, t_stack *stack_to, char *str)
 	append_front(stack_to, tmp->num, &tmp->order);
 	free(tmp);
 	printf("%s\n", str);
-	init_index(stack_from);
-	init_index(stack_to);
+	init_idxmax(stack_from);
+	init_idxmax(stack_to);
 }
 
 void	cmd_rarb(t_stack *stack, char *str)
@@ -83,7 +83,7 @@ void	cmd_rarb(t_stack *stack, char *str)
 	append_back(stack, tmp->num, &tmp->order);
 	free(tmp);
 	printf("%s\n", str);
-	init_index(stack);
+	init_idxmax(stack);
 }
 
 void	cmd_rrarrb(t_stack *stack, char *str)
@@ -97,21 +97,23 @@ void	cmd_rrarrb(t_stack *stack, char *str)
 	append_front(stack, tmp->num, &tmp->order);
 	free(tmp);
 	printf("%s\n", str);
-	init_index(stack);
+	init_idxmax(stack);
 }
 
-void	init_index(t_stack *stack)
+void	init_idxmax(t_stack *stack)
 {
 	int		i;
 	t_elem	*tmp;
 
 	i = 0;
 	tmp = stack->head;
-	while (tmp->next)
+	stack->max = -2147483648;
+	while (tmp)
 	{
+		if (tmp->order > stack->max)
+			stack->max = tmp->order;
 		tmp->idx = i;
 		i++;
 		tmp = tmp->next;
 	}
-	tmp->idx = i;
 }
