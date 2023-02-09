@@ -6,32 +6,29 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/03 20:37:29 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/09 23:43:52 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two_elem(t_stack *stack, t_elem **order_arr)
+void	sort_two_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 {
-	t_elem *tmp;
-
-	tmp = 0;
-	if (stack->head->order > stack->head->next->order)
+	if (stack_a->head->order > stack_a->head->next->order)
 	{
-		cmd_rarb(stack, "ra");
-		order_arr[0] = stack->head;
-		order_arr[1] = stack->tail;
+		ps_command("ra", stack_a, stack_b);
+		order_arr[0] = stack_a->head;
+		order_arr[1] = stack_a->tail;
 	}
 }
 
-void	reverse_two_elem(t_stack *stack)
+void	reverse_two_elem(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack->head->order < stack->head->next->order)
-		cmd_rarb(stack, "ra");
+	if (stack_b->head->order < stack_b->head->next->order)
+		ps_command("rb", stack_a, stack_b);
 }
 
-void	sort_three_elem(t_stack *stack_a, t_elem **order_arr)
+void	sort_three_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 {
 	int	check[3];
 	int	len;
@@ -45,18 +42,18 @@ void	sort_three_elem(t_stack *stack_a, t_elem **order_arr)
 			return ;
 		if (!check[0] && !check[1] && check[2])
 		{
-			cmd_rarb(stack_a, "ra");
+			ps_command("ra", stack_a, stack_b);
 			init_checkarr(stack_a, check, len);
 			continue ;
 		}
 		if (!check[1])
 		{
-			cmd_sasb(stack_a, "sa");
+			ps_command("sa", stack_a, stack_b);
 			init_checkarr(stack_a, check, len);
 		}
 		if (!check[2])
 		{
-			cmd_rrarrb(stack_a, "rra");
+			ps_command("rra", stack_a, stack_b);
 			init_checkarr(stack_a, check, len);
 		}
 	}
@@ -69,23 +66,25 @@ void	sort_four_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 		if (stack_a->cnt == 4 && check_sort(stack_a))
 			return ; 
 		if (stack_a->head->order == 1 && stack_a->cnt == 4)
-			cmd_papb(stack_a, stack_b, "pb");
+		{
+			ps_command("pb", stack_a, stack_b);
+		}
 		else if (stack_a->head->order == 3 || stack_a->head->order == 4)
 		{
-			cmd_rarb(stack_a, "ra");
+			ps_command("ra", stack_a, stack_b);
 			continue ;
 		}
 		if (stack_a->head->next->order == 1)
 		{
-			cmd_sasb(stack_a, "sa");
+			ps_command("sa", stack_a, stack_b);
 			continue ;
 		}
 		if (stack_a->cnt == 4 && stack_a->head->order == 2)
-			cmd_papb(stack_a, stack_b, "pb");
+			ps_command("pb", stack_a, stack_b);
 		if (stack_a->cnt == 3)
 		{
-			sort_three_elem(stack_a, order_arr);
-			cmd_papb(stack_b, stack_a, "pa");
+			sort_three_elem(stack_a, stack_b, order_arr);
+			ps_command("pa", stack_a, stack_b);
 		}
 	}
 }
@@ -103,16 +102,16 @@ void	sort_five_elem(t_stack *stack_a, t_stack *stack_b, t_elem **order_arr)
 			return ; 
 		if (stack_a->head->order < pivot)
 		{
-			cmd_papb(stack_a, stack_b, "pb");
+			ps_command("pb", stack_a, stack_b);
 			cnt++;
 		}
 		else
-			cmd_rrarrb(stack_a, "rra");
+			ps_command("rra", stack_a, stack_b);
 	}
-	sort_three_elem(stack_a, order_arr);
-	reverse_two_elem(stack_b);
-	cmd_papb(stack_b, stack_a, "pa");
-	cmd_papb(stack_b, stack_a, "pa");
+	sort_three_elem(stack_a, stack_b, order_arr);
+	reverse_two_elem(stack_a, stack_b);
+	ps_command("pa", stack_a, stack_b);
+	ps_command("pa", stack_a, stack_b);
 }
 
 void	init_checkarr(t_stack *stack_a, int *check, int len)
