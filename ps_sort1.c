@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 19:24:52 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:43:44 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:47:54 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	move_stacka(t_stack *stack_a, t_stack *stack_b)
 	while (stack_b->cnt)
 	{
 		move = check_movecnt(stack_a, stack_b);
-		printf("move : %p\n", move);
-		printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
+		// printf("move : %p\n", move);
+		// printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
 		moving_elem(stack_a, stack_b, move);
 	}
-	// sorting_asc(stack_a);
+	sorting_asc(stack_a, stack_b, move);
 }

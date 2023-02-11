@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:42:04 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:48:26 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		is_all_zero(char *str, int i);
 int		ps_atoi(char *str);
 void	free_matrix(char **arr);
 t_elem	**setting_order(t_elem **order_arr, t_stack *stack_a, int ac);
-void	init_info(t_info *info);
+t_info	*init_info(t_info *info);
 t_elem	**sort_arr(t_elem **order_arr, int ac);
 t_elem	**swap_orderarr(t_elem **order_arr, int i, int j);
 int		check_arr(t_elem **order_arr, int ac);
@@ -50,7 +50,7 @@ void	reverse_two_elem(t_stack *stack_a, t_stack *stack_b);
 void	sort_three_elem(t_stack *stack_a, t_stack *stack_b);
 void	sort_four_elem(t_stack *stack_a, t_stack *stack_b);
 void	sort_five_elem(t_stack *stack_a, t_stack *stack_b);
-void	sorting_asc(t_stack *stack_a);
+void	sorting_asc(t_stack *stack_a, t_stack *stack_b, t_info *move);
 t_info	*check_movecnt(t_stack *stack_a, t_stack *stack_b);
 int		calcuate_movecnt(t_stack *stack, int target_idx);
 int		calculate_movecnta(t_stack *stack_a, t_elem *tmp);

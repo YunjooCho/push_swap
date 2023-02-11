@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:41:10 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:45:13 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ t_elem	**setting_order(t_elem **order_arr, t_stack *stack_a, int ac)
 	return (order_arr);
 }
 
-void	init_info(t_info *info)
+t_info	*init_info(t_info *info)
 {
 	info = malloc(sizeof(t_info));
 	info->total_cnt = 0;
 	info->a_cnt = 0;
 	info->b_cnt = 0;
 	info->ab_cnt = 0;
+	return (info);
 }

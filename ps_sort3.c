@@ -6,20 +6,20 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:33:18 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:42:34 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:53:22 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sorting_asc(t_stack *stack_a)
+void	sorting_asc(t_stack *stack_a, t_stack *stack_b, t_info *move)
 {
 	int		idx;
-	int		a_cnt;
 	t_elem	*tmp;
 
 	idx = 0;
-	a_cnt = 0;
+	free(move);
+	move = init_info(move);
 	if (stack_a->head->order != 1)
 	{
 		tmp = stack_a->head;
@@ -29,14 +29,16 @@ void	sorting_asc(t_stack *stack_a)
 			{
 				idx = tmp->idx;
 				if (idx <= stack_a->cnt / 2)
-					a_cnt += tmp->idx;
+					move->a_cnt += tmp->idx;
 				else
-					a_cnt += (stack_a->cnt - tmp->idx) * -1;
+					move->a_cnt += (stack_a->cnt - tmp->idx) * -1;
 			}
 			tmp = tmp->next;
 		}
 	}
-	// moving_elem(stack_a, stack_b, move_cnt);
+	move->total_cnt = move->a_cnt;
+	// printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
+	moving_elem(stack_a, stack_b, move);
 }
 
 t_info	*check_movecnt(t_stack *stack_a, t_stack *stack_b)
@@ -47,13 +49,12 @@ t_info	*check_movecnt(t_stack *stack_a, t_stack *stack_b)
 
 	min = 0;
 	cur = 0;
-	init_info(min);
-	init_info(cur);
+	min = init_info(min);
+	cur = init_info(cur);
 	min->total_cnt = 2147483647;
 	tmp = stack_b->head;
 	while (tmp)
 	{
-		printf("min : %p %d\n", min, min->total_cnt);
 		tmp->b_cnt = calcuate_movecnt(stack_b, tmp->idx);
 		tmp->a_cnt = calculate_movecnta(stack_a, tmp);
 		cur = calculate_totalcnt(tmp, cur);

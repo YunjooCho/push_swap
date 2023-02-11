@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 20:33:06 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:46:49 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	main(int ac, char **av)
 	print_deque(&stack_a);
 	printf("stack b =============\n");
 	print_deque(&stack_b);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (0);
 }

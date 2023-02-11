@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:03:16 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:28:03 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:51:09 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	moving_elem(t_stack *stack_a, t_stack *stack_b, t_info *move)
 		calculate_abmovecnt(move, &flag);
 	while (move->total_cnt)
 	{
-		printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
+		// printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
 		if (move->ab_cnt)
 		{
 			str = "rr";
