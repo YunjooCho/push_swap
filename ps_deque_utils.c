@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:03:42 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/09 20:02:07 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 15:24:26 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	free_deque(t_stack *deque)
 		popped = pop_back(deque);
 		free(popped);
 	}
-	// free(deque);
 }
 
 void	print_deque(t_stack *deque)
