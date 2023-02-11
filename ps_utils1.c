@@ -6,27 +6,11 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/06 17:17:21 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 15:38:49 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_arg(int ac, char **av)
-{
-	int	i;
-	int	len;
-
-	i = 1;
-	len = 0;
-	printf("ac : %d\n", ac);
-	while (av[i])
-	{
-		len = ft_strlen(av[i]);
-		printf("av[%d] : %s\nav[%d] len : %d\n", i, av[i], i, len);
-		i++;
-	}
-}
 
 void	print_exit(int flag)
 {
@@ -40,7 +24,7 @@ void	print_exit(int flag)
 	{
 		printf("End\n");
 		// system("leaks push_swap");
-		exit(1) ;
+		exit(1);
 	}
 }
 

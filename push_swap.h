@@ -6,18 +6,69 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 15:35:39 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:42:04 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
+# include <stdio.h>//DELETE
+
 # include "libft.h"
 # include "limits.h"
 # include "ps_deque.h"
 
+typedef struct	s_info
+{
+	int	total_cnt;
+	int	a_cnt;
+	int	b_cnt;
+	int	ab_cnt;
+} t_info;
 
+void	print_exit(int flag);
+int		is_correct_arg(int ac);
+void	parsing_argv(char **av, t_stack *stack);
+void	split_atoi(char *str, t_stack *stack, int *order);
+int		is_plus_minus(char *str, int i);
+int		is_all_zero(char *str, int i);
+int		ps_atoi(char *str);
+void	free_matrix(char **arr);
+t_elem	**setting_order(t_elem **order_arr, t_stack *stack_a, int ac);
+void	init_info(t_info *info);
+t_elem	**sort_arr(t_elem **order_arr, int ac);
+t_elem	**swap_orderarr(t_elem **order_arr, int i, int j);
+int		check_arr(t_elem **order_arr, int ac);
+void	sort_under_five(t_stack *stack_a, t_stack *stack_b);
+void	sort_above_five(t_stack *stack_a, t_stack *stack_b);
+void	init_pivot(int *pia, int *pib, int len);
+void	move_stackb(t_stack *stack_a, t_stack *stack_b, int pia, int pib);
+void	move_stacka(t_stack *stack_a, t_stack *stack_b);
+void	sort_two_elem(t_stack *stack_a, t_stack *stack_b);
+void	reverse_two_elem(t_stack *stack_a, t_stack *stack_b);
+void	sort_three_elem(t_stack *stack_a, t_stack *stack_b);
+void	sort_four_elem(t_stack *stack_a, t_stack *stack_b);
+void	sort_five_elem(t_stack *stack_a, t_stack *stack_b);
+void	sorting_asc(t_stack *stack_a);
+t_info	*check_movecnt(t_stack *stack_a, t_stack *stack_b);
+int		calcuate_movecnt(t_stack *stack, int target_idx);
+int		calculate_movecnta(t_stack *stack_a, t_elem *tmp);
+t_info 	*calculate_totalcnt(t_elem *tmp, t_info *cur);
+void	moving_elem(t_stack *stack_a, t_stack *stack_b, t_info *move);
+void	abs_cnt(int	*a_cnt, int *b_cnt, int *flag);
+void	init_checkarr(t_stack *stack_a, int *check, int len);
+int		check_sort(t_stack *stack_a);
+void	calculate_abmovecnt(t_info *move, int *flag);
+void	ps_command(char *str, t_stack *stack_a, t_stack *stack_b);
+void	command_swap(char *str, t_stack *stack_a, t_stack *stack_b, int str_len);
+void	command_push(char *str, t_stack *stack_a, t_stack *stack_b, int str_len);
+void	command_rotate(char *str, t_stack *stack_a, t_stack *stack_b, \
+	int str_len);
+void	cmd_sasb(t_stack *stack);
+void	cmd_papb(t_stack *stack_from, t_stack *stack_to);
+void	cmd_rarb(t_stack *stack);
+void	cmd_rrarrb(t_stack *stack);
+void	init_idxmax(t_stack *stack);
 
 #endif
