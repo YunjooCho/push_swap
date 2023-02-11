@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:03:16 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:51:09 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:15:38 by yunjcho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,32 +58,32 @@ int	check_sort(t_stack *stack_a)
 void	moving_elem(t_stack *stack_a, t_stack *stack_b, t_info *move)
 {
 	int		flag;
-	char	*str;
+	// char	*str;
 
 	flag = 1;
 	if (move->a_cnt * move->b_cnt> 0)
 		calculate_abmovecnt(move, &flag);
 	while (move->total_cnt)
 	{
-		// printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
-		if (move->ab_cnt)
-		{
-			str = "rr";
-			move->ab_cnt--;
-		}
-		else if (move->b_cnt)
-		{
-			str = "rb";
-			move->b_cnt--;
-		}
-		else if (move->a_cnt)
-		{
-			str = "ra";
-			move->a_cnt--;
-		}
-		if (!flag)
-			str = ft_strjoin("r", str);
-		ps_command(str, stack_a, stack_b);
+		printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
+		// if (move->ab_cnt)
+		// {
+		// 	str = "rr";
+		// 	move->ab_cnt--;
+		// }
+		// else if (move->b_cnt)
+		// {
+		// 	str = "rb";
+		// 	move->b_cnt--;
+		// }
+		// else if (move->a_cnt)
+		// {
+		// 	str = "ra";
+		// 	move->a_cnt--;
+		// }
+		// if (!flag)
+		// 	str = ft_strjoin("r", str);
+		// ps_command(str, stack_a, stack_b);
 		move->total_cnt--;
 	}
 	ps_command("pa", stack_a, stack_b);

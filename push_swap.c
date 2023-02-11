@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:46:49 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:21:16 by yunjcho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,7 @@ int	main(int ac, char **av)
 	// system("leaks push_swap");
 	return (0);
 }
+
+//2023.02.11
+//moving_elem 수정하기
+//notion에 기록한 argument 정렬되는지 확인

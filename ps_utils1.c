@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 15:38:49 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:09:22 by yunjcho          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ void	print_exit(int flag)
 
 int	is_correct_arg(int ac)
 {
-	int	res;
-
-	res = 0;
 	if (ac <= 1)
 		return (0);
 	return (1);
