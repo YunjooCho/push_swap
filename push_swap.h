@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:48:26 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/13 20:01:50 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ typedef struct	s_info
 	int	a_cnt;
 	int	b_cnt;
 	int	ab_cnt;
+	int	a_flag;
+	int	b_flag;
+	int	ab_flag;
 } t_info;
 
 void	print_exit(int flag);
@@ -56,10 +59,9 @@ int		calcuate_movecnt(t_stack *stack, int target_idx);
 int		calculate_movecnta(t_stack *stack_a, t_elem *tmp);
 t_info 	*calculate_totalcnt(t_elem *tmp, t_info *cur);
 void	moving_elem(t_stack *stack_a, t_stack *stack_b, t_info *move);
-void	abs_cnt(int	*a_cnt, int *b_cnt, int *flag);
 void	init_checkarr(t_stack *stack_a, int *check, int len);
 int		check_sort(t_stack *stack_a);
-void	calculate_abmovecnt(t_info *move, int *flag);
+void	init_flag(t_info *move);
 void	ps_command(char *str, t_stack *stack_a, t_stack *stack_b);
 void	command_swap(char *str, t_stack *stack_a, t_stack *stack_b, int str_len);
 void	command_push(char *str, t_stack *stack_a, t_stack *stack_b, int str_len);

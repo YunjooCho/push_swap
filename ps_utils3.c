@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:39:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:45:13 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/13 19:45:54 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,8 @@ t_info	*init_info(t_info *info)
 	info->a_cnt = 0;
 	info->b_cnt = 0;
 	info->ab_cnt = 0;
+	info->a_flag = 1;
+	info->b_flag = 1;
+	info->ab_flag = 1;
 	return (info);
 }

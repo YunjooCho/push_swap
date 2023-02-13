@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 16:03:16 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 23:15:38 by yunjcho          ###   ########seoul.kr  */
+/*   Updated: 2023/02/13 20:08:58 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,71 +57,66 @@ int	check_sort(t_stack *stack_a)
 
 void	moving_elem(t_stack *stack_a, t_stack *stack_b, t_info *move)
 {
-	int		flag;
-	// char	*str;
+	char	*rotate;
 
-	flag = 1;
-	if (move->a_cnt * move->b_cnt> 0)
-		calculate_abmovecnt(move, &flag);
+	rotate = 0;	
+	init_flag(move);
 	while (move->total_cnt)
 	{
-		printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
-		// if (move->ab_cnt)
-		// {
-		// 	str = "rr";
-		// 	move->ab_cnt--;
-		// }
-		// else if (move->b_cnt)
-		// {
-		// 	str = "rb";
-		// 	move->b_cnt--;
-		// }
-		// else if (move->a_cnt)
-		// {
-		// 	str = "ra";
-		// 	move->a_cnt--;
-		// }
-		// if (!flag)
-		// 	str = ft_strjoin("r", str);
-		// ps_command(str, stack_a, stack_b);
+		if (move->ab_cnt)
+		{
+			rotate = "rr";
+			if (!move->ab_flag)
+				rotate = ft_strjoin("r", rotate);
+			move->ab_cnt--;
+		}
+		else if (move->b_cnt)
+		{
+			rotate = "rb";
+			if (!move->b_flag)
+				rotate = ft_strjoin("r", rotate);
+			move->b_cnt--;
+		}
+		else if (move->a_cnt)
+		{
+			rotate = "ra";
+			if (!move->a_flag)
+				rotate = ft_strjoin("r", rotate);
+			move->a_cnt--;
+		}
+		ps_command(rotate, stack_a, stack_b);
 		move->total_cnt--;
 	}
 	ps_command("pa", stack_a, stack_b);
 }
 
-void	abs_cnt(int	*a_cnt, int *b_cnt, int *flag)
+void	init_flag(t_info *move)
 {
-	*flag = 1;
-	if (*a_cnt < 0)
+	if (move->a_cnt < 0)
 	{
-		*a_cnt *= -1;
-		*flag = 0;
+		move->a_cnt *= -1;
+		move->a_flag = 0;
 	}
-	if (*b_cnt < 0)
+	if (move->b_cnt < 0)
 	{
-		*b_cnt *= -1;
-		*flag = 0;
+		move->b_cnt *= -1;
+		move->b_flag = 0;
 	}
-}
-
-void	calculate_abmovecnt(t_info *move, int *flag)
-{
-	int	a_cnt;
-	int	b_cnt;
-
-	a_cnt = move->a_cnt;
-	b_cnt = move->b_cnt;
-	abs_cnt(&a_cnt, &b_cnt, flag);
-	if (a_cnt - b_cnt > 0)
+	if (move->a_flag == move->b_flag)
 	{
-		move->total_cnt = b_cnt;
-		move->a_cnt = a_cnt - b_cnt;
-		move->b_cnt = 0;
-	}
-	else
-	{
-		move->total_cnt = a_cnt;
-		move->b_cnt = b_cnt - a_cnt;
-		move->a_cnt = 0;
+		if (!move->a_flag && !move->b_flag)
+			move->ab_flag = 0;
+		if (move->a_cnt - move->b_cnt > 0)
+		{
+			move->ab_cnt = move->b_cnt;
+			move->a_cnt = move->a_cnt - move->b_cnt;
+			move->b_cnt = 0;
+		}
+		else
+		{
+			move->ab_cnt = move->a_cnt;
+			move->b_cnt = move->b_cnt - move->a_cnt;
+			move->a_cnt = 0;
+		}
 	}
 }

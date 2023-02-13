@@ -3,7 +3,16 @@
 		"algorithm": "c",
 		"ratio": "c",
 		"chrono": "c",
-		"limits": "c"
+		"limits": "c",
+		"__bit_reference": "c",
+		"__string": "c",
+		"deque": "c",
+		"future": "c",
+		"ios": "c",
+		"string": "c",
+		"type_traits": "c",
+		"regex": "c",
+		"sstream": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

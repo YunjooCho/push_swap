@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:33:18 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 21:53:22 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/13 20:25:03 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	sorting_asc(t_stack *stack_a, t_stack *stack_b, t_info *move)
 		}
 	}
 	move->total_cnt = move->a_cnt;
-	// printf("total_cnt : %d, ab_cnt : %d, a_cnt : %d, b_cnt : %d\n", move->total_cnt, move->ab_cnt, move->a_cnt, move->b_cnt);
 	moving_elem(stack_a, stack_b, move);
 }
 
@@ -59,7 +58,11 @@ t_info	*check_movecnt(t_stack *stack_a, t_stack *stack_b)
 		tmp->a_cnt = calculate_movecnta(stack_a, tmp);
 		cur = calculate_totalcnt(tmp, cur);
 		if (cur->total_cnt < min->total_cnt)
-			min = cur;
+		{
+			min->total_cnt = cur->total_cnt;
+			min->a_cnt = cur->a_cnt;
+			min->b_cnt = cur->b_cnt;
+		}
 		tmp = tmp->next;
 	}
 	return (min);
@@ -81,17 +84,19 @@ int	calcuate_movecnt(t_stack *stack, int target_idx)
 
 int	calculate_movecnta(t_stack *stack_a, t_elem *tmp)
 {	
+	int		a_mid;
 	int		target_idx;
 	t_elem	*cur;
 
-	target_idx = 0;
+	a_mid = stack_a->cnt / 2;
 	cur = stack_a->head;
+	target_idx = 0;
 	while (cur->next)
 	{
 		if (tmp->order > stack_a->max)
 		{
 			if (stack_a->head->order == 1)
-				return (0);
+				return (target_idx);
 			else if (cur->order == 1)
 			{
 				target_idx = cur->idx;
@@ -105,20 +110,22 @@ int	calculate_movecnta(t_stack *stack_a, t_elem *tmp)
 		}
 		cur = cur->next;
 	}
-	return (calcuate_movecnt(stack_a, target_idx));
+	if (target_idx > a_mid)
+		target_idx = (stack_a->cnt - target_idx) * -1;
+	return (target_idx);
 }
 
 t_info *calculate_totalcnt(t_elem *tmp, t_info *cur)
 {
+	cur->total_cnt = 0;
+	cur->a_cnt = tmp->a_cnt;
+	cur->b_cnt = tmp->b_cnt;
 	if (tmp->a_cnt < 0)
-	{
-		cur->total_cnt += tmp->a_cnt * -1;
-		cur->a_cnt = tmp->a_cnt;
-	}
+		cur->a_cnt *= -1;
 	if (tmp->b_cnt < 0)
-	{
-		cur->total_cnt += tmp->b_cnt * -1;
-		cur->b_cnt = tmp->b_cnt;
-	}
+		cur->b_cnt *= -1;
+	cur->total_cnt = cur->a_cnt + cur->b_cnt;
+	cur->a_cnt = tmp->a_cnt;
+	cur->b_cnt = tmp->b_cnt;
 	return (cur);
 }

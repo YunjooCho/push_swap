@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:25:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 16:10:59 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:03:14 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	sort_three_elem(t_stack *stack_a, t_stack *stack_b)
 		if (!check[0] && !check[1] && check[2])
 		{
 			ps_command("ra", stack_a, stack_b);
+			init_checkarr(stack_a, check, len);
 			continue ;
 		}
 		if (!check[1])
