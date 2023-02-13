@@ -12,7 +12,8 @@
 		"string": "c",
 		"type_traits": "c",
 		"regex": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"push_swap.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

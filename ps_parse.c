@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_utils2.c                                        :+:      :+:    :+:   */
+/*   ps_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 23:04:56 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/05 19:05:04 by yunjcho          ###   ########.fr       */
+/*   Created: 2023/02/13 21:05:20 by yunjcho           #+#    #+#             */
+/*   Updated: 2023/02/13 21:37:37 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	parsing_argv(char **av, t_stack *stack)
+{
+	int	i;
+	int	order;
+
+	i = 1;
+	order = 1;
+	while (av[i])
+	{
+		split_atoi(av[i], stack, &order);
+		i++;
+	}
+}
 
 void	split_atoi(char *str, t_stack *stack, int *order)
 {

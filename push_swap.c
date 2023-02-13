@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/13 16:04:04 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:15:15 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	if (!is_correct_arg(ac))
 		print_exit(1);
 	parsing_argv(av, &stack_a);
-	order_arr = setting_order(order_arr, &stack_a, ac);
+	order_arr = indexing_order(order_arr, &stack_a, ac);
 	if (stack_a.cnt <= 5)
 		sort_under_five(&stack_a, &stack_b);
 	else
@@ -33,10 +33,8 @@ int	main(int ac, char **av)
 	print_deque(&stack_a);
 	printf("stack b =============\n");
 	print_deque(&stack_b);
-	// system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }
 
-//2023.02.11
-//moving_elem 수정하기
-//notion에 기록한 argument 정렬되는지 확인
+//2023.02.13 check_movecnt leaks 처리

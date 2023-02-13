@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_utils1.c                                        :+:      :+:    :+:   */
+/*   ps_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 23:09:22 by yunjcho          ###   ########seoul.kr  */
+/*   Updated: 2023/02/13 21:52:16 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	print_exit(int flag)
 	if (flag == 1)
 	{
 		printf("Error\n");
-		// system("leaks push_swap");
+		system("leaks push_swap");
 		exit(1);
 	}
 	else if (flag == 0)
 	{
 		printf("End\n");
-		// system("leaks push_swap");
+		system("leaks push_swap");
 		exit(1);
 	}
 }
@@ -35,16 +35,32 @@ int	is_correct_arg(int ac)
 	return (1);
 }
 
-void	parsing_argv(char **av, t_stack *stack)
+int	check_sort(t_stack *stack_a)
 {
-	int	i;
-	int	order;
+	int		i;
+	t_elem	*tmp;
 
-	i = 1;
-	order = 1;
-	while (av[i])
+	i = 0;
+	tmp = stack_a->head;
+	while (i < stack_a->cnt && tmp)
 	{
-		split_atoi(av[i], stack, &order);
+		if (tmp->order != (i + 1))
+			return (0);
+		tmp = tmp->next;
 		i++;
 	}
+	return (1);
+}
+
+void	free_matrix(char **arr)
+{
+	int	idx;
+
+	idx = 0;
+	while (arr[idx])
+	{
+		free(arr[idx]);
+		idx++;
+	}
+	free(arr);
 }
