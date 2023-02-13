@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:33:18 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/13 22:15:36 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:35:49 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	sorting_asc(t_stack *stack_a, t_stack *stack_b, t_info *move)
 	t_elem	*tmp;
 
 	idx = 0;
+	init_info(move);
 	if (stack_a->head->order != 1)
 	{
 		tmp = stack_a->head;
@@ -71,9 +72,9 @@ void	sorting_asc(t_stack *stack_a, t_stack *stack_b, t_info *move)
 			{
 				idx = tmp->idx;
 				if (idx <= stack_a->cnt / 2)
-					move->a_cnt += tmp->idx;
+					move->a_cnt = tmp->idx;
 				else
-					move->a_cnt += (stack_a->cnt - tmp->idx) * -1;
+					move->a_cnt = (stack_a->cnt - tmp->idx) * -1;
 			}
 			tmp = tmp->next;
 		}

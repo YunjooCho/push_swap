@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:29:32 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/13 22:15:15 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:41:29 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ int	main(int ac, char **av)
 		sort_under_five(&stack_a, &stack_b);
 	else
 		sort_above_five(&stack_a, &stack_b);
-	printf("stack a =============\n");
-	print_deque(&stack_a);
-	printf("stack b =============\n");
-	print_deque(&stack_b);
-	system("leaks push_swap");
+	// printf("stack a =============\n");
+	// print_deque(&stack_a);
+	// printf("stack b =============\n");
+	// print_deque(&stack_b);
+	// system("leaks push_swap");
 	return (0);
 }
 
-//2023.02.13 check_movecnt leaks 처리
+//2023.02.13
+//leaks 마지막 체크
+//checker linux 사용
+//bonus 하기
