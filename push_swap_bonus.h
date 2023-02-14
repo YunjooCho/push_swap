@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:06:01 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/14 22:11:30 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 22:33:06 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "libft.h"
+# include "get_next_line.h"
 # include "limits.h"
 # include "ps_deque.h"
 # include <unistd.h>
