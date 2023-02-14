@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/14 20:28:58 by yunjcho          ###   ########.fr       */
+/*   Created: 2023/02/14 20:06:01 by yunjcho           #+#    #+#             */
+/*   Updated: 2023/02/14 22:11:30 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "libft.h"
 # include "limits.h"
 # include "ps_deque.h"
 # include <unistd.h>
 
-#include <stdio.h>
+# include <stdio.h>
 
 typedef struct s_info
 {

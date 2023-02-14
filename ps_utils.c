@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/14 18:28:18 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 22:18:37 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ void	print_exit(int flag)
 		exit(1);
 	}
 	else if (flag == 0)
-	{
-		ft_putendl_fd("End", 1);
 		exit(1);
-	}
 }
 
 int	is_correct_arg(int ac)
