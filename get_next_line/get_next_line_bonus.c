@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 20:13:01 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/17 17:02:36 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 22:41:01 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*get_next_line(int fd)
 {
-	static t_info	*head;
-	t_info			*node;
+	static t_ginfo	*head;
+	t_ginfo			*node;
 	char			*result;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -41,16 +41,16 @@ char	*get_next_line(int fd)
 	}
 }
 
-void	ft_init(t_info *node, char **result)
+void	ft_init(t_ginfo *node, char **result)
 {
 	*result = malloc(1);
 	**result = 0;
 	node->total = 0;
 }
 
-t_info	*ft_get_node(t_info **head, int fd)
+t_ginfo	*ft_get_node(t_ginfo **head, int fd)
 {
-	t_info	*lst;
+	t_ginfo	*lst;
 
 	lst = *head;
 	while (lst)
@@ -62,12 +62,12 @@ t_info	*ft_get_node(t_info **head, int fd)
 	return (ft_lstadd_back(head, fd));
 }
 
-t_info	*ft_lstadd_back(t_info **head, int fd)
+t_ginfo	*ft_lstadd_back(t_ginfo **head, int fd)
 {
-	t_info	*new_node;
-	t_info	*lst;
+	t_ginfo	*new_node;
+	t_ginfo	*lst;
 
-	new_node = malloc(sizeof(t_info));
+	new_node = malloc(sizeof(t_ginfo));
 	if (new_node)
 	{
 		new_node->fd = fd;

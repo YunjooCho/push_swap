@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:01:48 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/17 16:23:07 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 22:40:19 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_info
+typedef struct s_ginfo
 {
 	int				fd;
 	char			buffer[BUFFER_SIZE];
@@ -28,16 +28,16 @@ typedef struct s_info
 	int				rbyte;
 	int				len;
 	int				total;
-	struct s_info	*next;
-}	t_info;
+	struct s_ginfo	*next;
+}	t_ginfo;
 
 char	*get_next_line(int fd);
 void	ft_memcpy_gnl(char *dst, char *src, size_t len);
-char	*join(char *old, t_info *node);
-void	ft_init(t_info *node, char **result);
-char	*ft_exception(t_info *node, char *result, t_info **head);
-t_info	*ft_get_node(t_info **head, int fd);
-t_info	*ft_lstadd_back(t_info **head, int fd);
-void	ft_remove_node(t_info **head, int fd);
+char	*join(char *old, t_ginfo *node);
+void	ft_init(t_ginfo *node, char **result);
+char	*ft_exception(t_ginfo *node, char *result, t_ginfo **head);
+t_ginfo	*ft_get_node(t_ginfo **head, int fd);
+t_ginfo	*ft_lstadd_back(t_ginfo **head, int fd);
+void	ft_remove_node(t_ginfo **head, int fd);
 
 #endif

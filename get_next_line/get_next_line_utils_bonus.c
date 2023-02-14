@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:02:09 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/01/17 16:23:47 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 22:40:38 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_memcpy_gnl(char *dst, char *src, size_t len)
 	}
 }
 
-char	*join(char *old, t_info *node)
+char	*join(char *old, t_ginfo *node)
 {
 	char	*new;
 
@@ -45,7 +45,7 @@ char	*join(char *old, t_info *node)
 	return (new);
 }
 
-char	*ft_exception(t_info *node, char *result, t_info **head)
+char	*ft_exception(t_ginfo *node, char *result, t_ginfo **head)
 {
 	char	*ret;
 
@@ -58,10 +58,10 @@ char	*ft_exception(t_info *node, char *result, t_info **head)
 	return (ret);
 }
 
-void	ft_remove_node(t_info **head, int fd)
+void	ft_remove_node(t_ginfo **head, int fd)
 {
-	t_info	*lst;
-	t_info	*tmp;
+	t_ginfo	*lst;
+	t_ginfo	*tmp;
 
 	lst = *head;
 	while (lst->next)

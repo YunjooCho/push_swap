@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:05:36 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/14 22:39:15 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 22:45:52 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int ac, char **av)
 		command = get_next_line(0);
 		command = ft_strtrim(command, "\n");
 		ps_command(command, &stack_a, &stack_b);
-		if (EOF)
-			break;
+		// if (EOF)
+		// 	break;
 	}
 	printf("stack a =============\n");
 	print_deque(&stack_a);
@@ -54,3 +54,9 @@ int	main(int ac, char **av)
 	system("leaks push_swap_bonus");
 	return (0);
 }
+
+
+//2023.02.14
+//1. ps_command(char *str, t_stack *stack_a, t_stack *stack_b)
+//   mandatory, bonus에 따라 출력 처리 분리하기(함수분리?)
+//2. bonus main() 명령어 계속해서 받도록 처리
