@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:03:42 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 15:24:26 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:24:45 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,5 @@ void	free_deque(t_stack *deque)
 	{
 		popped = pop_back(deque);
 		free(popped);
-	}
-}
-
-void	print_deque(t_stack *deque)
-{
-	t_elem	*tmp;
-
-	tmp = deque->head;
-	printf("deque max : %d\n", deque->max);
-	while (tmp)
-	{
-		printf("elem[%d] :%p, num : %d, idx: %d, order : %d, a_cnt : %d, b_cnt : %d, prev : %p, next : %p\n", \
-			tmp->order, tmp, tmp->num, tmp->idx, tmp->order, tmp->a_cnt, tmp->b_cnt, tmp->prev, tmp->next);
-		tmp = tmp->next;
 	}
 }

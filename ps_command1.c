@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:12:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/11 19:45:30 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:29:14 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ps_command(char *str, t_stack *stack_a, t_stack *stack_b)
 		command_push(str, stack_a, stack_b, str_len);
 	else if (str[0] == 'r')
 		command_rotate(str, stack_a, stack_b, str_len);
-	printf("%s\n", str);
+	ft_putendl_fd(str, 0);
 }
 
 void	command_swap(char *str, t_stack *stack_a, t_stack *stack_b, int str_len)

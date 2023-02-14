@@ -6,20 +6,18 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/14 18:16:10 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:24:57 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>//DELETE
-
 # include "libft.h"
 # include "limits.h"
 # include "ps_deque.h"
 
-typedef struct	s_info
+typedef struct s_info
 {
 	int	total_cnt;
 	int	a_cnt;
@@ -28,7 +26,7 @@ typedef struct	s_info
 	int	a_flag;
 	int	b_flag;
 	int	ab_flag;
-} t_info;
+}	t_info;
 
 void	print_exit(int flag);
 int		is_correct_arg(int ac);
@@ -68,9 +66,12 @@ int		calcuate_movecnt(t_stack *stack, int target_idx);
 int		calculate_movecnta(t_stack *stack_a, t_elem *tmp);
 void	calculate_totalcnt(t_elem *tmp, t_info *cur);
 void	ps_command(char *str, t_stack *stack_a, t_stack *stack_b);
-void	command_swap(char *str, t_stack *stack_a, t_stack *stack_b, int str_len);
-void	command_push(char *str, t_stack *stack_a, t_stack *stack_b, int str_len);
-void	command_rotate(char *str, t_stack *stack_a, t_stack *stack_b, int str_len);
+void	command_swap(char *str, t_stack *stack_a, t_stack *stack_b, \
+int str_len);
+void	command_push(char *str, t_stack *stack_a, t_stack *stack_b, \
+int str_len);
+void	command_rotate(char *str, t_stack *stack_a, t_stack *stack_b, \
+int str_len);
 void	cmd_sasb(t_stack *stack);
 void	cmd_papb(t_stack *stack_from, t_stack *stack_to);
 void	cmd_rarb(t_stack *stack);
