@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:05:20 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/13 21:37:37 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:59:41 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	is_plus_minus(char *str, int i)
 
 	idx = i;
 	if (!ft_isdigit(str[idx + 1]))
-		print_exit(1);
+		print_exit(0);
 	if (str[idx] == '-')
 		return (-1);
 	return (1);

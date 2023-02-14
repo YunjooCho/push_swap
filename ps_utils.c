@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:07:21 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/13 21:52:16 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:44:40 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_exit(int flag)
 	else if (flag == 0)
 	{
 		printf("End\n");
-		system("leaks push_swap");
+		// system("leaks push_swap");
 		exit(1);
 	}
 }
@@ -63,4 +63,17 @@ void	free_matrix(char **arr)
 		idx++;
 	}
 	free(arr);
+}
+
+void	free_orderarr(t_elem **order_arr)
+{
+	int	idx;
+
+	idx = 0;
+	while (order_arr[idx])
+	{
+		free(order_arr[idx]);
+		idx++;
+	}
+	free(order_arr);
 }

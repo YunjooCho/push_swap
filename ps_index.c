@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:08:43 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/13 21:37:10 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:17:36 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,38 @@ t_elem	**indexing_order(t_elem **order_arr, t_stack *stack_a, int ac)
 
 	i = 0;
 	tmp = stack_a->head;
-	order_arr = (t_elem **)malloc(sizeof(t_elem *) * (ac - 1));
+	order_arr = (t_elem **)malloc(sizeof(t_elem *) * (stack_a->cnt + 1));
 	while (tmp)
 	{
 		order_arr[i] = tmp;
 		tmp = tmp->next;
 		i++;
 	}
-	order_arr = sort_order(order_arr, ac);
+	order_arr[i] = 0;
+	sort_order(order_arr, stack_a);
 	if (!check_arr(order_arr, ac))
 		print_exit(1);
 	return (order_arr);
 }
 
-t_elem	**sort_order(t_elem **order_arr, int ac)
+t_elem	**sort_order(t_elem **order_arr, t_stack *stack_a)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (i < ac)
+	while (i < stack_a->cnt - 1)
 	{
 		j = i + 1;
-		while (j < ac - 1)
+		while (j < stack_a->cnt)
 		{
+			if (order_arr[i]->num == order_arr[j]->num)
+			{
+				free_orderarr(order_arr);
+				print_exit(1);
+			}
 			if (order_arr[i]->num > order_arr[j]->num)
-				order_arr = swap_orderarr(order_arr, i, j);
+				swap_orderarr(order_arr, i, j);
 			j++;
 		}
 		i++;
@@ -52,7 +58,7 @@ t_elem	**sort_order(t_elem **order_arr, int ac)
 	return (order_arr);
 }
 
-t_elem	**swap_orderarr(t_elem **order_arr, int i, int j)
+void	swap_orderarr(t_elem **order_arr, int i, int j)
 {
 	int		tmp_ord;
 	t_elem	*tmp;
@@ -64,7 +70,6 @@ t_elem	**swap_orderarr(t_elem **order_arr, int i, int j)
 	order_arr[j]->order = tmp_ord;
 	order_arr[j] = tmp;
 	tmp = 0;
-	return (order_arr);
 }
 
 int	check_arr(t_elem **order_arr, int ac)
@@ -75,7 +80,7 @@ int	check_arr(t_elem **order_arr, int ac)
 	i = 0;
 	j = 1;
 	if (!order_arr)
-		print_exit(1);
+		return (0);
 	while (j < (ac - 1))
 	{
 		if (order_arr[i]->num == order_arr[j]->num)
