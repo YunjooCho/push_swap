@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:33:18 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/17 19:21:06 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 23:36:55 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	moving_elem(t_stack *stack_a, t_stack *stack_b, t_info *move)
 		ps_command(rotate, stack_a, stack_b);
 		move->total_cnt--;
 	}
-	ps_command("pa", stack_a, stack_b);
+	if (stack_b->cnt)
+		ps_command("pa", stack_a, stack_b);
 }
 
 char	*moving_rotate(t_info *move)

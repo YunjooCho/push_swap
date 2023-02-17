@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 21:05:20 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/14 18:20:26 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 23:25:22 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ int	ps_atoi(char *str)
 		n = n * is_plus_minus(str, i);
 		i++;
 	}
-	if (!is_all_zero(str, i))
-		print_exit(1);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
