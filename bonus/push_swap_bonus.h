@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:06:01 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/17 20:18:34 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 20:27:54 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include "limits.h"
 # include "ps_deque_bonus.h"
 # include <unistd.h>
-
-#include <stdio.h> //TODO - 지우기
 
 typedef struct s_info
 {
@@ -37,7 +35,10 @@ int		is_correct_arg(int ac);
 int		check_sort(t_stack *stack_a);
 void	free_matrix(char **arr);
 void	free_orderarr(t_elem **order_arr);
+int		get_start_idx(char const *s1, char const *set);
+int		get_end_idx(char const *s1, char const *set);
 char	*ps_strtrim(char *command, char *newline);
+void	print_result(t_stack *stack_a, t_stack *stack_b);
 void	parsing_argv(char **av, t_stack *stack);
 void	split_atoi(char *str, t_stack *stack, int *order);
 int		is_plus_minus(char *str, int i);

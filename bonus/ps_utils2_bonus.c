@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 20:14:59 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/17 20:19:31 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 20:34:50 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,12 @@ char	*ps_strtrim(char *command, char *newline)
 	free(command);
 	arr[n] = '\0';
 	return (arr);
+}
+
+void	print_result(t_stack *stack_a, t_stack *stack_b)
+{
+	if (!check_sort(stack_a))
+		ft_putendl_fd("KO", 1);
+	else if (check_sort(stack_a) && !stack_b->cnt)
+		ft_putendl_fd("OK", 1);
 }

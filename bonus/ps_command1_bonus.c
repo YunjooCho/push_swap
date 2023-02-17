@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:12:07 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/17 20:02:18 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 20:33:00 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	command_swap(char *str, t_stack *stack_a, t_stack *stack_b, int str_len)
 		cmd_sasb(stack_a);
 		cmd_sasb(stack_b);
 	}
+	else
+		print_exit(1);
 }
 
 void	command_push(char *str, t_stack *stack_a, t_stack *stack_b, int str_len)
@@ -48,6 +50,8 @@ void	command_push(char *str, t_stack *stack_a, t_stack *stack_b, int str_len)
 		cmd_papb(stack_b, stack_a);
 	else if (!ft_strncmp(str, "pb", str_len))
 		cmd_papb(stack_a, stack_b);
+	else
+		print_exit(1);
 }
 
 void	command_rotate(char *str, t_stack *stack_a, t_stack *stack_b, \
@@ -71,4 +75,6 @@ void	command_rotate(char *str, t_stack *stack_a, t_stack *stack_b, \
 		cmd_rrarrb(stack_a);
 		cmd_rrarrb(stack_b);
 	}
+	else
+		print_exit(1);
 }

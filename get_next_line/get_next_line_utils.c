@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 19:02:09 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/17 19:49:35 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 20:36:00 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_init(t_ginfo *node, char **result)
 char	*ft_exception(t_ginfo *node, char *result)
 {
 	char	*ret;
-	
+
 	ret = NULL;
 	if (node->rbyte == 0 && node->total)
 		ret = result;

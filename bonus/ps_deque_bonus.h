@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_deque.h                                         :+:      :+:    :+:   */
+/*   ps_deque_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 18:23:29 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/09 18:36:32 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 20:36:48 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_DEQUE_H
-# define PS_DEQUE_H
+#ifndef PS_DEQUE_BONUS_H
+# define PS_DEQUE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>

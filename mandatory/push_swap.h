@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/17 19:29:34 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 20:22:23 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include "limits.h"
 # include "ps_deque.h"
 # include <unistd.h>
-
-#include <stdio.h> //TODO - 지우기
 
 typedef struct s_info
 {
