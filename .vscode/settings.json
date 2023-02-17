@@ -13,7 +13,10 @@
 		"type_traits": "c",
 		"regex": "c",
 		"sstream": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"__tree": "c",
+		"bitset": "c",
+		"set": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

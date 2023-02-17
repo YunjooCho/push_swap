@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ps_utils2_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 11:10:49 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/17 20:19:05 by yunjcho          ###   ########.fr       */
+/*   Created: 2023/02/17 20:14:59 by yunjcho           #+#    #+#             */
+/*   Updated: 2023/02/17 20:19:31 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap_bonus.h"
 
-static	int	get_start_idx(char const *s1, char const *set)
+int	get_start_idx(char const *s1, char const *set)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,7 @@ static	int	get_start_idx(char const *s1, char const *set)
 	return (i);
 }
 
-static	int	get_end_idx(char const *s1, char const *set)
+int	get_end_idx(char const *s1, char const *set)
 {
 	int	i;
 	int	j;
@@ -61,29 +61,30 @@ static	int	get_end_idx(char const *s1, char const *set)
 	return (k);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ps_strtrim(char *command, char *newline)
 {
 	int		start;
 	int		end;
 	int		n;
 	char	*arr;
 
-	if (!s1)
+	if (!command)
 		return (0);
-	if (!set)
-		return (ft_strdup(s1));
-	start = get_start_idx(s1, set);
-	end = get_end_idx(s1, set);
+	if (!newline)
+		return (command);
+	start = get_start_idx(command, newline);
+	end = get_end_idx(command, newline);
 	n = 0;
 	arr = (char *)malloc(sizeof(char) * (end - start + 2));
 	if (arr == 0)
 		return (0);
 	while (start < end + 1)
 	{
-		arr[n] = s1[start];
+		arr[n] = command[start];
 		n++;
 		start++;
 	}
+	free(command);
 	arr[n] = '\0';
 	return (arr);
 }

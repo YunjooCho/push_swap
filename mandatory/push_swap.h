@@ -6,7 +6,7 @@
 /*   By: yunjcho <yunjcho@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:30:12 by yunjcho           #+#    #+#             */
-/*   Updated: 2023/02/14 20:28:58 by yunjcho          ###   ########.fr       */
+/*   Updated: 2023/02/17 19:29:34 by yunjcho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "ps_deque.h"
 # include <unistd.h>
 
-#include <stdio.h>
+#include <stdio.h> //TODO - 지우기
 
 typedef struct s_info
 {
